@@ -1,0 +1,6 @@
+C:\Users\Betzabe\source\repos\BEErpStore\ADErpStore\bin\Debug\netstandard2.0\ADErpStore.deps.json
+C:\Users\Betzabe\source\repos\BEErpStore\ADErpStore\bin\Debug\netstandard2.0\ADErpStore.dll
+C:\Users\Betzabe\source\repos\BEErpStore\ADErpStore\obj\Debug\netstandard2.0\ADErpStore.csprojResolveAssemblyReference.cache
+C:\Users\Betzabe\source\repos\BEErpStore\ADErpStore\obj\Debug\netstandard2.0\ADErpStore.csproj.CoreCompileInputs.cache
+C:\Users\Betzabe\source\repos\BEErpStore\ADErpStore\obj\Debug\netstandard2.0\ADErpStore.AssemblyInfoInputs.cache
+C:\Users\Betzabe\source\repos\BEErpStore\ADErpStore\obj\Debug\netstandard2.0\ADErpStore.AssemblyInfo.cs

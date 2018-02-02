@@ -1,0 +1,2 @@
+C:\Users\Betzabe\source\repos\BEErpStore\Presentation\obj\Debug\Presentation.csprojResolveAssemblyReference.cache
+C:\Users\Betzabe\source\repos\BEErpStore\Presentation\obj\Debug\Presentation.csproj.CoreCompileInputs.cache

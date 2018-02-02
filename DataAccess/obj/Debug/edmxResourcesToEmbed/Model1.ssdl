@@ -1,0 +1,991 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_9CBF45_erpStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ERError">
+    <Key>
+      <PropertyRef Name="idError" />
+    </Key>
+    <Property Name="idError" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="messageError" Type="nchar" MaxLength="4000" Nullable="false" />
+    <Property Name="userError" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateError" Type="datetime" Nullable="false" />
+    <Property Name="nameStoreProcedureError" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GEBrand">
+    <Key>
+      <PropertyRef Name="idBrand" />
+    </Key>
+    <Property Name="idBrand" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="userCreated" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GECategory">
+    <Key>
+      <PropertyRef Name="idCategory" />
+    </Key>
+    <Property Name="idCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="userCreated" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="GEGlobalParameters">
+    <Key>
+      <PropertyRef Name="IGV" />
+      <PropertyRef Name="percentageMinWholesalePrice" />
+      <PropertyRef Name="percentageMinRetailPrice" />
+    </Key>
+    <Property Name="IGV" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="percentageMinWholesalePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="percentageMinRetailPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GEProduct">
+    <Key>
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idCategory" Type="int" Nullable="false" />
+    <Property Name="idMarca" Type="int" Nullable="false" />
+    <Property Name="codeUnit" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="divisible" Type="bit" Nullable="false" />
+    <Property Name="divisibleCodeUnit" Type="varchar" MaxLength="20" />
+    <Property Name="divisibleNumberParts" Type="int" />
+    <Property Name="perishable" Type="bit" Nullable="false" />
+    <Property Name="traceable" Type="bit" Nullable="false" />
+    <Property Name="barcodeType" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="userCreated" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GEProductBarcode">
+    <Key>
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="barcode" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GEProductPrice">
+    <Key>
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="purchasePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="wholesalePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="wholesaleMinPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="retailPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="retailMinPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="partPrice" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="userCreated" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GEProductPriceAudit">
+    <Key>
+      <PropertyRef Name="idAuditPP" />
+    </Key>
+    <Property Name="idAuditPP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="purchasePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="wholesalePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="wholesaleMinPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="retailPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="retailMinPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="partPrice" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="GEProductProperty">
+    <Key>
+      <PropertyRef Name="idProduct" />
+      <PropertyRef Name="idProperty" />
+    </Key>
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="idProperty" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="abbreviation" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="required" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GEStore">
+    <Key>
+      <PropertyRef Name="idStore" />
+    </Key>
+    <Property Name="idStore" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="200" />
+    <Property Name="processSale" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="userCreated" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="GEUnit">
+    <Key>
+      <PropertyRef Name="codeUnit" />
+    </Key>
+    <Property Name="codeUnit" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="userCreated" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PUSupplier">
+    <Key>
+      <PropertyRef Name="idSupplier" />
+    </Key>
+    <Property Name="idSupplier" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="documentType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="documentNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="200" />
+    <Property Name="phoneNumber" Type="varchar" MaxLength="100" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="contactPerson" Type="varchar" MaxLength="100" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="userCreated" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SASale">
+    <Key>
+      <PropertyRef Name="idSale" />
+    </Key>
+    <Property Name="idSale" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="documentType" Type="varchar" MaxLength="20" />
+    <Property Name="documentNumber" Type="varchar" MaxLength="20" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="ticket" Type="int" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="userCreated" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SASaleDetail">
+    <Key>
+      <PropertyRef Name="idSale" />
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idSale" Type="int" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="unitPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="partSale" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEAction">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEProfile">
+    <Key>
+      <PropertyRef Name="idProfile" />
+    </Key>
+    <Property Name="idProfile" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="userCreated" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SEProfileAction">
+    <Key>
+      <PropertyRef Name="idProfile" />
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="idProfile" Type="int" Nullable="false" />
+    <Property Name="code" Type="varchar" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEUser">
+    <Key>
+      <PropertyRef Name="userName" />
+    </Key>
+    <Property Name="userName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="idProfile" Type="int" Nullable="false" />
+    <Property Name="idStore" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="lastname" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="varbinary(max)" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="userCreated" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TRCash">
+    <Key>
+      <PropertyRef Name="idCash" />
+    </Key>
+    <Property Name="idCash" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idStore" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="userCreated" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TRCashMovement">
+    <Key>
+      <PropertyRef Name="idMovement" />
+    </Key>
+    <Property Name="idMovement" Type="int" Nullable="false" />
+    <Property Name="idCash" Type="int" Nullable="false" />
+    <Property Name="idSale" Type="int" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="movementType" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="amountOpening" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="amountClosing" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="concept" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="userCreated" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="WAEntry">
+    <Key>
+      <PropertyRef Name="idEntry" />
+    </Key>
+    <Property Name="idEntry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idSource" Type="int" Nullable="false" />
+    <Property Name="entryType" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="userCreated" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="userUpdated" Type="varchar" MaxLength="50" />
+    <Property Name="dateUpdated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="WAEntryDetail">
+    <Key>
+      <PropertyRef Name="idEntry" />
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idEntry" Type="int" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="purchasePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="dueDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="WAEntryDetailProperty">
+    <Key>
+      <PropertyRef Name="idEntry" />
+      <PropertyRef Name="idProduct" />
+      <PropertyRef Name="idProperty" />
+    </Key>
+    <Property Name="idEntry" Type="int" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="idProperty" Type="int" Nullable="false" />
+    <Property Name="value" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="WAProductStock">
+    <Key>
+      <PropertyRef Name="idStore" />
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idStore" Type="int" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="stock" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="barcode" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WAProductStockAudit">
+    <Key>
+      <PropertyRef Name="idAuditPS" />
+    </Key>
+    <Property Name="idAuditPS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idStore" Type="int" Nullable="false" />
+    <Property Name="idProduct" Type="int" Nullable="false" />
+    <Property Name="stock" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="barcode" Type="varchar" MaxLength="50" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Function Name="fuGetDatePeru" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="datetime" />
+  <Function Name="uspERErrorInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="message" Type="nvarchar" Mode="In" />
+    <Parameter Name="nameStoreProcedure" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="uspGEBrandDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBrand" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEBrandInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEBrandSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEBrandUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idBrand" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGECategoryDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idCategory" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGECategoryInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGECategorySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGECategoryUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idCategory" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEGlobalParametersSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEGlobalParametersUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="igv" Type="decimal" Mode="In" />
+    <Parameter Name="percentageMinWholesalePrice" Type="decimal" Mode="In" />
+    <Parameter Name="percentageMinRetailPrice" Type="decimal" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductBarcodeDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="barcode" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductBarcodeInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="barcode" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductBarcodeSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idCategory" Type="int" Mode="In" />
+    <Parameter Name="idMarca" Type="int" Mode="In" />
+    <Parameter Name="codeUnit" Type="varchar" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="divisible" Type="bit" Mode="In" />
+    <Parameter Name="divisibleCodeUnit" Type="varchar" Mode="In" />
+    <Parameter Name="divisibleNumberParts" Type="int" Mode="In" />
+    <Parameter Name="perishable" Type="bit" Mode="In" />
+    <Parameter Name="traceable" Type="bit" Mode="In" />
+    <Parameter Name="barcodeType" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductPriceAuditInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="purchasePrice" Type="decimal" Mode="In" />
+    <Parameter Name="wholesalePrice" Type="decimal" Mode="In" />
+    <Parameter Name="wholesaleMinPrice" Type="decimal" Mode="In" />
+    <Parameter Name="retailPrice" Type="decimal" Mode="In" />
+    <Parameter Name="retailMinPrice" Type="decimal" Mode="In" />
+    <Parameter Name="partPrice" Type="decimal" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductPriceDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductPriceInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="purchasePrice" Type="decimal" Mode="In" />
+    <Parameter Name="wholesalePrice" Type="decimal" Mode="In" />
+    <Parameter Name="wholesaleMinPrice" Type="decimal" Mode="In" />
+    <Parameter Name="retailPrice" Type="decimal" Mode="In" />
+    <Parameter Name="retailMinPrice" Type="decimal" Mode="In" />
+    <Parameter Name="partPrice" Type="decimal" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductPriceSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductPriceUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="purchasePrice" Type="decimal" Mode="In" />
+    <Parameter Name="wholesalePrice" Type="decimal" Mode="In" />
+    <Parameter Name="wholesaleMinPrice" Type="decimal" Mode="In" />
+    <Parameter Name="retailPrice" Type="decimal" Mode="In" />
+    <Parameter Name="retailMinPrice" Type="decimal" Mode="In" />
+    <Parameter Name="partPrice" Type="decimal" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductPropertyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="idProductProperty" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductPropertyInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="abbreviation" Type="varchar" Mode="In" />
+    <Parameter Name="required" Type="bit" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductPropertySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductPropertyUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProductProperty" Type="int" Mode="In" />
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="abbreviation" Type="varchar" Mode="In" />
+    <Parameter Name="required" Type="bit" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="idCategory" Type="int" Mode="In" />
+    <Parameter Name="idMarca" Type="int" Mode="In" />
+    <Parameter Name="codeUnit" Type="varchar" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="divisible" Type="bit" Mode="In" />
+    <Parameter Name="divisibleCodeUnit" Type="varchar" Mode="In" />
+    <Parameter Name="divisibleNumberParts" Type="int" Mode="In" />
+    <Parameter Name="perishable" Type="bit" Mode="In" />
+    <Parameter Name="traceable" Type="bit" Mode="In" />
+    <Parameter Name="barcodeType" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEStoreDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idStore" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEStoreInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="address" Type="varchar" Mode="In" />
+    <Parameter Name="processSale" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEStoreSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEStoreUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idStore" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="address" Type="varchar" Mode="In" />
+    <Parameter Name="processSale" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEUnitDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codeUnit" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEUnitInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="code" Type="varchar" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEUnitSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEUnitUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codeUnitOld" Type="varchar" Mode="In" />
+    <Parameter Name="codeUnitNew" Type="varchar" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspPUSupplierDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idSupplier" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspPUSupplierInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="documentType" Type="varchar" Mode="In" />
+    <Parameter Name="documentNumber" Type="varchar" Mode="In" />
+    <Parameter Name="address" Type="varchar" Mode="In" />
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="contactPerson" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspPUSupplierSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspPUSupplierUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idSupplier" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="documentType" Type="varchar" Mode="In" />
+    <Parameter Name="documentNumber" Type="varchar" Mode="In" />
+    <Parameter Name="address" Type="varchar" Mode="In" />
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="contactPerson" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSASaleDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idSale" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSASaleDetailDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idSale" Type="int" Mode="In" />
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSASaleDetailInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idSale" Type="int" Mode="In" />
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="unitPrice" Type="decimal" Mode="In" />
+    <Parameter Name="partSale" Type="bit" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSASaleDetailSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSASaleInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="documentType" Type="varchar" Mode="In" />
+    <Parameter Name="documentNumber" Type="varchar" Mode="In" />
+    <Parameter Name="date" Type="datetime" Mode="In" />
+    <Parameter Name="ticket" Type="int" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="idSale" Type="int" Mode="InOut" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSASaleSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSASaleUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idSale" Type="int" Mode="In" />
+    <Parameter Name="documentType" Type="varchar" Mode="In" />
+    <Parameter Name="documentNumber" Type="varchar" Mode="In" />
+    <Parameter Name="date" Type="datetime" Mode="In" />
+    <Parameter Name="status" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEActionDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="code" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEActionInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="code" Type="varchar" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEActionSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEActionUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="codeOld" Type="varchar" Mode="In" />
+    <Parameter Name="codeNew" Type="varchar" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEProfileActionDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProfile" Type="int" Mode="In" />
+    <Parameter Name="code" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEProfileActionInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProfile" Type="int" Mode="In" />
+    <Parameter Name="code" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEProfileActionSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEProfileDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProfile" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEProfileInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEProfileSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEProfileUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProfile" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEUserDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEUserInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="idProfile" Type="int" Mode="In" />
+    <Parameter Name="idStore" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="lastname" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varbinary" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varbinary" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEUserSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEUserUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userOld" Type="varchar" Mode="In" />
+    <Parameter Name="userNew" Type="varchar" Mode="In" />
+    <Parameter Name="idProfile" Type="int" Mode="In" />
+    <Parameter Name="idStore" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="lastname" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEUserUpdatePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="passOld" Type="varbinary" Mode="In" />
+    <Parameter Name="passNew" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspTRCashDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idCash" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspTRCashInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idStore" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspTRCashMovementDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idMovement" Type="int" Mode="In" />
+    <Parameter Name="idCash" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspTRCashMovementInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idMovement" Type="int" Mode="In" />
+    <Parameter Name="idCash" Type="int" Mode="In" />
+    <Parameter Name="idSale" Type="int" Mode="In" />
+    <Parameter Name="date" Type="datetime" Mode="In" />
+    <Parameter Name="movementType" Type="varchar" Mode="In" />
+    <Parameter Name="amount" Type="decimal" Mode="In" />
+    <Parameter Name="amountOpening" Type="decimal" Mode="In" />
+    <Parameter Name="amountClosing" Type="decimal" Mode="In" />
+    <Parameter Name="concept" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspTRCashMovementSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspTRCashMovementUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idMovement" Type="int" Mode="In" />
+    <Parameter Name="idCash" Type="int" Mode="In" />
+    <Parameter Name="idSale" Type="int" Mode="In" />
+    <Parameter Name="date" Type="datetime" Mode="In" />
+    <Parameter Name="movementType" Type="varchar" Mode="In" />
+    <Parameter Name="amount" Type="decimal" Mode="In" />
+    <Parameter Name="amountOpening" Type="decimal" Mode="In" />
+    <Parameter Name="amountClosing" Type="decimal" Mode="In" />
+    <Parameter Name="concept" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspTRCashSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspTRCashUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idCash" Type="int" Mode="In" />
+    <Parameter Name="idStore" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAEntryDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idEntry" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAEntryDetailDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="idEntry" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAEntryDetailInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idEntry" Type="int" Mode="In" />
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="purchasePrice" Type="decimal" Mode="In" />
+    <Parameter Name="dueDate" Type="datetime" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAEntryDetailPropertyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="idEntry" Type="int" Mode="In" />
+    <Parameter Name="idProperty" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAEntryDetailPropertyInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idEntry" Type="int" Mode="In" />
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="idProperty" Type="int" Mode="In" />
+    <Parameter Name="value" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAEntryDetailPropertySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAEntryDetailSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAEntryInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idSource" Type="int" Mode="In" />
+    <Parameter Name="entryType" Type="varchar" Mode="In" />
+    <Parameter Name="date" Type="datetime" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="idEntry" Type="int" Mode="InOut" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAEntrySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAEntryUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idEntry" Type="int" Mode="In" />
+    <Parameter Name="idSource" Type="int" Mode="In" />
+    <Parameter Name="entryType" Type="varchar" Mode="In" />
+    <Parameter Name="date" Type="datetime" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAProductStockAuditInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idStore" Type="int" Mode="In" />
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="stock" Type="decimal" Mode="In" />
+    <Parameter Name="barcode" Type="varchar" Mode="In" />
+    <Parameter Name="date" Type="datetime" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAProductStockInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idStore" Type="int" Mode="In" />
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="stock" Type="decimal" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="barcode" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAProductStockUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idStore" Type="int" Mode="In" />
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="stock" Type="decimal" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="DB_9CBF45_erpStoreModelStoreContainer">
+    <EntitySet Name="ERError" EntityType="Self.ERError" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GEBrand" EntityType="Self.GEBrand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GECategory" EntityType="Self.GECategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GEProduct" EntityType="Self.GEProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GEProductBarcode" EntityType="Self.GEProductBarcode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GEProductPrice" EntityType="Self.GEProductPrice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GEProductPriceAudit" EntityType="Self.GEProductPriceAudit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GEProductProperty" EntityType="Self.GEProductProperty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GEStore" EntityType="Self.GEStore" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GEUnit" EntityType="Self.GEUnit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PUSupplier" EntityType="Self.PUSupplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SASale" EntityType="Self.SASale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SASaleDetail" EntityType="Self.SASaleDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SEAction" EntityType="Self.SEAction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SEProfile" EntityType="Self.SEProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SEProfileAction" EntityType="Self.SEProfileAction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SEUser" EntityType="Self.SEUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TRCash" EntityType="Self.TRCash" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TRCashMovement" EntityType="Self.TRCashMovement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WAEntry" EntityType="Self.WAEntry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WAEntryDetail" EntityType="Self.WAEntryDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WAEntryDetailProperty" EntityType="Self.WAEntryDetailProperty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WAProductStock" EntityType="Self.WAProductStock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WAProductStockAudit" EntityType="Self.WAProductStockAudit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GEGlobalParameters" EntityType="Self.GEGlobalParameters" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [GEGlobalParameters].[IGV] AS [IGV], 
+    [GEGlobalParameters].[percentageMinWholesalePrice] AS [percentageMinWholesalePrice], 
+    [GEGlobalParameters].[percentageMinRetailPrice] AS [percentageMinRetailPrice], 
+    [GEGlobalParameters].[userUpdated] AS [userUpdated], 
+    [GEGlobalParameters].[dateUpdated] AS [dateUpdated]
+    FROM [dbo].[GEGlobalParameters] AS [GEGlobalParameters]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
