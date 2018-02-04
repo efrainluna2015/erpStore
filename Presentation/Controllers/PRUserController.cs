@@ -16,7 +16,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     DAUser user = new DAUser(PUser);
                     ENResult result = user.search();
@@ -40,7 +40,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspSEUserSearch_Result data = new uspSEUserSearch_Result();
                     data.userName = userName;
@@ -70,7 +70,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspSEUserLogin_Result data = new uspSEUserLogin_Result();
                     data.userName = userName;
@@ -95,15 +95,14 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public JsonResult updatePassword(string userName, Byte[] password, string passNew)
+        public JsonResult updatePassword(string userName, string passNew)
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspSEUserLogin_Result data = new uspSEUserLogin_Result();
                     data.userName = userName;
-                    data.password = password;
                     DAUser user = new DAUser(PUser);
                     ENResult result = user.update(data, passNew);
                     result.token = PCreateToken();
@@ -125,7 +124,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspSEUserSearch_Result data = new uspSEUserSearch_Result();
                     data.userName = userName;
@@ -146,24 +145,14 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public JsonResult login(string userName, Byte[] password)
+        public JsonResult login(string userName, string password)
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
-                {
-                    uspSEUserSearch_Result data = new uspSEUserSearch_Result();
-                    data.userName = userName;
-                    data.password = password;
-                    DAUser user = new DAUser(PUser);
-                    ENResult result = user.login(data);
-                    result.token = PCreateToken();
-                    return Json(result);
-                }
-                else
-                {
-                    return PSecurityError();
-                }
+                DAUser user = new DAUser(PUser);
+                ENResult result = user.login(userName, password);
+                result.token = PCreateToken();
+                return Json(result);
             }
             catch (Exception ex)
             {

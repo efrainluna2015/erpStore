@@ -15,7 +15,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     DAUnit unit = new DAUnit(PUser);
                     ENResult result = unit.search();
@@ -39,7 +39,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspGEUnitSearch_Result data = new uspGEUnitSearch_Result();
                     data.codeUnit = code;
@@ -65,7 +65,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspGEUnitSearch_Result data = new uspGEUnitSearch_Result();
                     data.codeUnit = codeOld;
@@ -90,7 +90,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspGEUnitSearch_Result data = new uspGEUnitSearch_Result();
                     data.codeUnit = code;

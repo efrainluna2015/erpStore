@@ -15,7 +15,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     DAProfileAction profileAction = new DAProfileAction(PUser);
                     ENResult result = profileAction.search();
@@ -39,7 +39,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspSEProfileActionSearch_Result data = new uspSEProfileActionSearch_Result();
                     data.idProfile = idProfile;
@@ -65,7 +65,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspSEProfileActionSearch_Result data = new uspSEProfileActionSearch_Result();
                     data.idProfile = idProfile;

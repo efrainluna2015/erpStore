@@ -21,7 +21,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     List<uspGEGlobalParametersSearch_Result> result = db.uspGEGlobalParametersSearch(PUser, PReturnCode, PReturnMessage).ToList();
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage),result);
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value),result);
                 }
             }
             catch (Exception ex)
@@ -39,7 +39,7 @@ namespace DataAccess
                 {
                     db.uspGEGlobalParametersUpdate(data.IGV, data.percentageMinWholesalePrice,data.percentageMinRetailPrice,
                         data.userUpdated, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)

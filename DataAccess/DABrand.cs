@@ -21,7 +21,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     List<uspGEBrandSearch_Result> result = db.uspGEBrandSearch(PUser, PReturnCode, PReturnMessage).ToList();
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage), result);
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value), result);
                 }
             }
             catch (Exception ex)
@@ -37,7 +37,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspGEBrandInsert(data.name, PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -53,7 +53,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspGEBrandUpdate(data.idBrand, data.name, PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -69,7 +69,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspGEBrandDelete(data.idBrand, PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)

@@ -758,7 +758,13 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
   </Function>
   <Function Name="uspSEUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="username" Type="varchar" Mode="In" />
-    <Parameter Name="password" Type="varbinary" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspSEUserProfileActionSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="username" Type="varchar" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
     <Parameter Name="returnCode" Type="int" Mode="InOut" />
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
@@ -781,7 +787,6 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
   </Function>
   <Function Name="uspSEUserUpdatePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="username" Type="varchar" Mode="In" />
-    <Parameter Name="passOld" Type="varbinary" Mode="In" />
     <Parameter Name="passNew" Type="varchar" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
     <Parameter Name="returnCode" Type="int" Mode="InOut" />

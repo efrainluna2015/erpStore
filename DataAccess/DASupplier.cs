@@ -21,7 +21,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     List<uspPUSupplierSearch_Result> result = db.uspPUSupplierSearch(PUser, PReturnCode, PReturnMessage).ToList();
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage), result);
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value), result);
                 }
             }
             catch (Exception ex)
@@ -38,7 +38,7 @@ namespace DataAccess
                 {
                     db.uspPUSupplierInsert(data.name, data.documentType, data.documentNumber, data.address, 
                             data.phoneNumber, data.email, data.contactPerson, PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -55,7 +55,7 @@ namespace DataAccess
                 {
                     db.uspPUSupplierUpdate(data.idSupplier, data.name, data.documentType, data.documentNumber, data.address,
                             data.phoneNumber, data.email, data.userCreated, data.userUpdated, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -71,7 +71,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspPUSupplierDelete(data.idSupplier, PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)

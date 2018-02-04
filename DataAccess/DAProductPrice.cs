@@ -21,7 +21,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     List<uspGEProductPriceSearch_Result> result = db.uspGEProductPriceSearch(PUser, PReturnCode, PReturnMessage).ToList();
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage), result);
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value), result);
                 }
             }
             catch (Exception ex)
@@ -40,7 +40,7 @@ namespace DataAccess
                         data.retailPrice,data.retailMinPrice,data.partPrice,data.userCreated, PReturnCode, PReturnMessage);
                     db.uspGEProductPriceAuditInsert(data.idProduct, data.purchasePrice, data.wholesalePrice, data.wholesaleMinPrice,
                         data.retailPrice, data.retailMinPrice, data.partPrice, data.userCreated, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -59,7 +59,7 @@ namespace DataAccess
                         data.retailPrice, data.retailMinPrice, data.partPrice, data.userUpdated, PReturnCode, PReturnMessage);
                     db.uspGEProductPriceAuditInsert(data.idProduct, data.purchasePrice, data.wholesalePrice, data.wholesaleMinPrice,
                         data.retailPrice, data.retailMinPrice, data.partPrice, data.userUpdated, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -75,7 +75,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspGEProductPriceDelete(data.idProduct, PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)

@@ -15,7 +15,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     DAProductBarcode barcode = new DAProductBarcode(PUser);
                     ENResult result = barcode.search();
@@ -39,7 +39,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspGEProductBarcodeSearch_Result data = new uspGEProductBarcodeSearch_Result();
                     data.idProduct = idProduct;  
@@ -65,7 +65,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspGEProductBarcodeSearch_Result data = new uspGEProductBarcodeSearch_Result();
                     data.idProduct = idProduct;

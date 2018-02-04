@@ -21,7 +21,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     List<uspGEProductSearch_Result> result = db.uspGEProductSearch(PUser, PReturnCode, PReturnMessage).ToList();
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage),result);
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value),result);
                 }
             }
             catch (Exception ex)
@@ -39,7 +39,7 @@ namespace DataAccess
                     db.uspGEProductInsert(data.idCategory,data.idMarca, data.codeUnit, data.name, data.divisible,
                         data.divisibleCodeUnit,data.divisibleNumberParts,data.perishable,data.traceable,data.barcodeType,
                         PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -57,7 +57,7 @@ namespace DataAccess
                     db.uspGEProductUpdate(data.idProduct, data.idCategory, data.idMarca, data.codeUnit, data.name, data.divisible,
                         data.divisibleCodeUnit, data.divisibleNumberParts, data.perishable, data.traceable, data.barcodeType,
                         data.userUpdated, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -73,7 +73,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspGEProductDelete(data.idProduct, PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)

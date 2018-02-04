@@ -15,7 +15,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     DAGlobalParameters globalParameters = new DAGlobalParameters(PUser);
                     ENResult result = globalParameters.search();
@@ -39,7 +39,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspGEGlobalParametersSearch_Result data = new uspGEGlobalParametersSearch_Result();
                     data.IGV = IGV;

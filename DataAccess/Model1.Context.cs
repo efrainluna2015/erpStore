@@ -1148,7 +1148,7 @@ namespace DataAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspSEUserInsert", usernameParameter, idProfileParameter, idStoreParameter, nameParameter, lastnameParameter, passwordParameter, userParameter, returnCode, returnMessage);
         }
     
-        public virtual ObjectResult<uspSEUserLogin_Result> uspSEUserLogin(string username, byte[] password, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        public virtual ObjectResult<uspSEUserLogin_Result> uspSEUserLogin(string username, string password, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
         {
             var usernameParameter = username != null ?
                 new ObjectParameter("username", username) :
@@ -1156,13 +1156,26 @@ namespace DataAccess
     
             var passwordParameter = password != null ?
                 new ObjectParameter("password", password) :
-                new ObjectParameter("password", typeof(byte[]));
+                new ObjectParameter("password", typeof(string));
     
             var userParameter = user != null ?
                 new ObjectParameter("user", user) :
                 new ObjectParameter("user", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspSEUserLogin_Result>("uspSEUserLogin", usernameParameter, passwordParameter, userParameter, returnCode, returnMessage);
+        }
+    
+        public virtual ObjectResult<uspSEUserProfileActionSearch_Result> uspSEUserProfileActionSearch(string username, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        {
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var userParameter = user != null ?
+                new ObjectParameter("user", user) :
+                new ObjectParameter("user", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspSEUserProfileActionSearch_Result>("uspSEUserProfileActionSearch", usernameParameter, userParameter, returnCode, returnMessage);
         }
     
         public virtual ObjectResult<uspSEUserSearch_Result> uspSEUserSearch(string user, ObjectParameter returnCode, ObjectParameter returnMessage)
@@ -1207,15 +1220,11 @@ namespace DataAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspSEUserUpdate", userOldParameter, userNewParameter, idProfileParameter, idStoreParameter, nameParameter, lastnameParameter, userParameter, returnCode, returnMessage);
         }
     
-        public virtual int uspSEUserUpdatePassword(string username, byte[] passOld, string passNew, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        public virtual int uspSEUserUpdatePassword(string username, string passNew, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
         {
             var usernameParameter = username != null ?
                 new ObjectParameter("username", username) :
                 new ObjectParameter("username", typeof(string));
-    
-            var passOldParameter = passOld != null ?
-                new ObjectParameter("passOld", passOld) :
-                new ObjectParameter("passOld", typeof(byte[]));
     
             var passNewParameter = passNew != null ?
                 new ObjectParameter("passNew", passNew) :
@@ -1225,7 +1234,7 @@ namespace DataAccess
                 new ObjectParameter("user", user) :
                 new ObjectParameter("user", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspSEUserUpdatePassword", usernameParameter, passOldParameter, passNewParameter, userParameter, returnCode, returnMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspSEUserUpdatePassword", usernameParameter, passNewParameter, userParameter, returnCode, returnMessage);
         }
     
         public virtual int uspTRCashDelete(Nullable<int> idCash, string user, ObjectParameter returnCode, ObjectParameter returnMessage)

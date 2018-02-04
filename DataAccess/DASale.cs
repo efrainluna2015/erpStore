@@ -22,7 +22,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     List<uspSASaleSearch_Result> result = db.uspSASaleSearch(PUser, PReturnCode, PReturnMessage).ToList();
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage), result);
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value), result);
                 }
             }
             catch (Exception ex)
@@ -40,15 +40,15 @@ namespace DataAccess
                     ObjectParameter objIdSale = new ObjectParameter("idSale", 0);
                     db.uspSASaleInsert(data.documentType, data.documentNumber,data.date,data.ticket,
                                        data.status,data.userCreated, objIdSale,PReturnCode, PReturnMessage);
-                    if (Convert.ToInt32(PReturnCode) == 0)
+                    if (Convert.ToInt32(PReturnCode.Value) == 0)
                     {
                         int codeTemp = 0;
                         string messageTemp = "";
                         for (int i = 0; i < detail.Count; i++)
                         {
                             db.uspSASaleDetailInsert(Convert.ToInt32(objIdSale), detail[i].idProduct, detail[i].quantity, detail[i].unitPrice, detail[i].partSale, PUser, PReturnCode, PReturnMessage);
-                            codeTemp = Convert.ToInt32(PReturnCode);
-                            messageTemp = Convert.ToString(PReturnMessage);
+                            codeTemp = Convert.ToInt32(PReturnCode.Value);
+                            messageTemp = Convert.ToString(PReturnMessage.Value);
                             if (codeTemp != 0)
                             {
                                 break;
@@ -58,7 +58,7 @@ namespace DataAccess
                     }
                     else
                     {
-                        return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                        return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                     }
                 }
             }
@@ -76,7 +76,7 @@ namespace DataAccess
                 {
                     db.uspSASaleUpdate(data.idSale, data.documentType, data.documentNumber, data.date, 
                                        data.status, data.userUpdated, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -92,7 +92,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspSASaleDelete(data.idSale, PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)

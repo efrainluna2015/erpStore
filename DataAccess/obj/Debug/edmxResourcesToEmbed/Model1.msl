@@ -592,12 +592,16 @@
           <ScalarProperty Name="idStore" ColumnName="idStore" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="lastname" ColumnName="lastname" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="active" ColumnName="active" />
-          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
-          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
-          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
-          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="profileName" ColumnName="profileName" />
+          <ScalarProperty Name="storeName" ColumnName="storeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspSEUserProfileActionSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEUserProfileActionSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspSEUserProfileActionSearch_Result">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

@@ -1,6 +1,6 @@
 ﻿using DataAccess;
 using Entity;
-using System;DAProductProperty
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,7 +16,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     DAProductProperty property = new DAProductProperty(PUser);
                     ENResult result = property.search();
@@ -40,7 +40,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspGEProductPropertySearch_Result data = new uspGEProductPropertySearch_Result();
                     data.idProduct = idProduct;
@@ -68,7 +68,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspGEProductPropertySearch_Result data = new uspGEProductPropertySearch_Result();
                     data.idProperty = id;
@@ -97,7 +97,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspGEProductPropertySearch_Result data = new uspGEProductPropertySearch_Result();
                     data.idProperty = idProperty;

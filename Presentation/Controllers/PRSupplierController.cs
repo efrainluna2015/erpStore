@@ -15,7 +15,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     DASupplier supplier = new DASupplier(PUser);
                     ENResult result = supplier.search();
@@ -40,7 +40,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspPUSupplierSearch_Result data = new uspPUSupplierSearch_Result();
                     data.name = name;
@@ -72,7 +72,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspPUSupplierSearch_Result data = new uspPUSupplierSearch_Result();
                     data.idSupplier = id;
@@ -103,7 +103,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspPUSupplierSearch_Result data = new uspPUSupplierSearch_Result();
                     data.idSupplier = id;

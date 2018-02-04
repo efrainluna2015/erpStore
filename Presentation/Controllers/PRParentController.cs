@@ -22,9 +22,29 @@ namespace Presentation.Controllers
             return Json(new ENResult(3,"No tiene acceso"));
         }
 
-        public Boolean PValidateToken(string token)
+        public Boolean PValidateHeader(string headerParameter)
         {
-            PUser = "falta";
+            String[] temp = headerParameter.Split(' '); 
+            if (temp.Length == 3 )
+            {
+                if (PValidateToken(temp[1]))
+                {
+                    PUser = temp[2];
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }       
+        }
+
+        public Boolean PValidateToken(string tokenParameter)
+        {
             return true;
         }
 

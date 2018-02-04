@@ -22,7 +22,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     List<uspWAEntrySearch_Result> result = db.uspWAEntrySearch(PUser, PReturnCode, PReturnMessage).ToList();
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage), result);
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value), result);
                 }
             }
             catch (Exception ex)
@@ -39,17 +39,17 @@ namespace DataAccess
                 {
                     ObjectParameter objIdEntry = new ObjectParameter("idEntry", 0);
                     db.uspWAEntryInsert(data.idSource,data.entryType,data.date, data.userCreated, objIdEntry, PReturnCode, PReturnMessage);
-                    if (Convert.ToInt32(PReturnCode) == 0){
+                    if (Convert.ToInt32(PReturnCode.Value) == 0){
                         int codeTemp = 0;
                         string messageTemp = "";
                         for (int i=0; i< detail.Count; i++) {
                             db.uspWAEntryDetailInsert(Convert.ToInt32(objIdEntry), detail[i].idProduct, detail[i].quantity, detail[i].purchasePrice, detail[i].dueDate, PUser, PReturnCode, PReturnMessage);
-                            codeTemp = Convert.ToInt32(PReturnCode);
-                            messageTemp = Convert.ToString(PReturnMessage);
+                            codeTemp = Convert.ToInt32(PReturnCode.Value);
+                            messageTemp = Convert.ToString(PReturnMessage.Value);
                             for (int j = 0; j < property.Count; j++)
                             {
                                 db.uspWAEntryDetailPropertyInsert(Convert.ToInt32(objIdEntry), detail[i].idProduct, property[j].idProperty, property[j].value, PUser, PReturnCode, PReturnMessage);
-                                if (Convert.ToInt32(PReturnCode) != 0)
+                                if (Convert.ToInt32(PReturnCode.Value) != 0)
                                 {
                                     break;
                                 }
@@ -63,7 +63,7 @@ namespace DataAccess
                     }
                     else
                     {
-                        return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                        return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                     }                    
                 }
             }
@@ -80,7 +80,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspWAEntryUpdate(data.idEntry, data.idSource, data.entryType, data.date, data.userUpdated, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -96,7 +96,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspWAEntryDelete(data.idEntry, PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)

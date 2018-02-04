@@ -15,7 +15,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     DACashMovement movement = new DACashMovement(PUser);
                     ENResult result = movement.search();
@@ -40,7 +40,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspTRCashMovementSearch_Result data = new uspTRCashMovementSearch_Result();
                     data.idMovement = idMovement;
@@ -74,7 +74,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspTRCashMovementSearch_Result data = new uspTRCashMovementSearch_Result();
                     data.idMovement = idMovement;
@@ -106,7 +106,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspTRCashMovementSearch_Result data = new uspTRCashMovementSearch_Result();
                     data.idMovement = idMovement;

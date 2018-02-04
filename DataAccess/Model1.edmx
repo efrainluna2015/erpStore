@@ -763,7 +763,13 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
         </Function>
         <Function Name="uspSEUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="username" Type="varchar" Mode="In" />
-          <Parameter Name="password" Type="varbinary" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="user" Type="varchar" Mode="In" />
+          <Parameter Name="returnCode" Type="int" Mode="InOut" />
+          <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="uspSEUserProfileActionSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="varchar" Mode="In" />
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="returnCode" Type="int" Mode="InOut" />
           <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
@@ -786,7 +792,6 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
         </Function>
         <Function Name="uspSEUserUpdatePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="username" Type="varchar" Mode="In" />
-          <Parameter Name="passOld" Type="varbinary" Mode="In" />
           <Parameter Name="passNew" Type="varchar" Mode="In" />
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="returnCode" Type="int" Mode="InOut" />
@@ -1779,7 +1784,13 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           </FunctionImport>
           <FunctionImport Name="uspSEUserLogin" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspSEUserLogin_Result)">
             <Parameter Name="username" Mode="In" Type="String" />
-            <Parameter Name="password" Mode="In" Type="Binary" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+            <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspSEUserProfileActionSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspSEUserProfileActionSearch_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
             <Parameter Name="returnMessage" Mode="InOut" Type="String" />
@@ -1802,7 +1813,6 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           </FunctionImport>
           <FunctionImport Name="uspSEUserUpdatePassword">
             <Parameter Name="username" Mode="In" Type="String" />
-            <Parameter Name="passOld" Mode="In" Type="Binary" />
             <Parameter Name="passNew" Mode="In" Type="String" />
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
@@ -2126,12 +2136,12 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           <Property Type="Int32" Name="idStore" Nullable="false" />
           <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="lastname" Nullable="false" MaxLength="100" />
-          <Property Type="Binary" Name="password" Nullable="false" />
-          <Property Type="Boolean" Name="active" Nullable="false" />
-          <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
-          <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+          <Property Type="String" Name="profileName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="storeName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="uspSEUserProfileActionSearch_Result">
+          <Property Type="String" Name="code" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="uspSEUserSearch_Result">
           <Property Type="String" Name="userName" Nullable="false" MaxLength="50" />
@@ -2795,12 +2805,16 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
                 <ScalarProperty Name="idStore" ColumnName="idStore" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="lastname" ColumnName="lastname" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="active" ColumnName="active" />
-                <ScalarProperty Name="userCreated" ColumnName="userCreated" />
-                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
-                <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
-                <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+                <ScalarProperty Name="profileName" ColumnName="profileName" />
+                <ScalarProperty Name="storeName" ColumnName="storeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspSEUserProfileActionSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEUserProfileActionSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspSEUserProfileActionSearch_Result">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

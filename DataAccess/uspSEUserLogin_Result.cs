@@ -18,11 +18,7 @@ namespace DataAccess
         public int idStore { get; set; }
         public string name { get; set; }
         public string lastname { get; set; }
-        public byte[] password { get; set; }
-        public bool active { get; set; }
-        public string userCreated { get; set; }
-        public System.DateTime dateCreated { get; set; }
-        public string userUpdated { get; set; }
-        public Nullable<System.DateTime> dateUpdated { get; set; }
+        public string profileName { get; set; }
+        public string storeName { get; set; }
     }
 }

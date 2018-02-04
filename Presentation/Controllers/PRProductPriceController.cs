@@ -15,7 +15,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     DAProductPrice productPrice = new DAProductPrice(PUser);
                     ENResult result = productPrice.search();
@@ -40,7 +40,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspGEProductPriceSearch_Result data = new uspGEProductPriceSearch_Result();
                     data.idProduct = idProduct;
@@ -72,7 +72,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspGEProductPriceSearch_Result data = new uspGEProductPriceSearch_Result();
                     data.idProduct = idProduct;
@@ -102,7 +102,7 @@ namespace Presentation.Controllers
         {
             try
             {
-                if (PValidateToken(Request.Headers["Authorization"].ToString()))
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspGEProductPriceSearch_Result data = new uspGEProductPriceSearch_Result();
                     data.idProduct = id;

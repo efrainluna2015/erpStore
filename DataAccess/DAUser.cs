@@ -21,7 +21,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     List<uspSEUserSearch_Result> result = db.uspSEUserSearch(PUser, PReturnCode, PReturnMessage).ToList();
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage), result);
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value), result);
                 }
             }
             catch (Exception ex)
@@ -38,7 +38,7 @@ namespace DataAccess
                 {
                     db.uspSEUserInsert(data.userName,data.idProfile,data.idStore, data.name, data.lastname,data.password,
                         data.userCreated, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspSEUserUpdate(data.userName, usernameNew, data.idProfile, data.idStore,data.name,data.lastname,PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -69,8 +69,8 @@ namespace DataAccess
             {
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
-                    db.uspSEUserUpdatePassword(data.userName,data.password,passwordNew, PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    db.uspSEUserUpdatePassword(data.userName,passwordNew, PUser, PReturnCode, PReturnMessage);
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -86,7 +86,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspSEUserDelete(data.userName, PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
             catch (Exception ex)
@@ -94,14 +94,37 @@ namespace DataAccess
                 return PUnexpectedError(ex);
             }
         }
-        public ENResult login(uspSEUserSearch_Result data)
+        public ENResult login(string userName, string password)
         {
             try
             {
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
-                    db.uspSEUserLogin(data.userName, data.password, PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode), Convert.ToString(PReturnMessage));
+                    List<uspSEUserLogin_Result> result = db.uspSEUserLogin(userName, password, PUser, PReturnCode, PReturnMessage).ToList();
+                    if ( result.Count > 0 && Convert.ToInt32(PReturnCode.Value)==0)  
+                    {
+                        ENUser user = new ENUser();
+                        user.userName = result[0].userName;
+                        user.idProfile = result[0].idProfile;
+                        user.idStore = result[0].idStore;
+                        user.name = result[0].name;
+                        user.lastname = result[0].lastname;
+                        user.profileName = result[0].profileName;
+                        user.storeName = result[0].storeName;
+                        List<uspSEUserProfileActionSearch_Result> actions =  db.uspSEUserProfileActionSearch(userName, PUser, PReturnCode, PReturnMessage).ToList();
+
+                        for (int i =0; i< actions.Count; i++)
+                        {
+                            user.actions.Add(new ENUserAction(actions[i].code, actions[i].name));
+                        }
+                        
+                        return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value), user);
+                    }
+                    else
+                    {
+                        return new ENResult(3, "Usuario o clave incorrecta");
+                    }
+                    
                 }
             }
             catch (Exception ex)
