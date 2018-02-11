@@ -260,15 +260,15 @@ namespace DataAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspGEProductDelete", idProductParameter, userParameter, returnCode, returnMessage);
         }
     
-        public virtual int uspGEProductInsert(Nullable<int> idCategory, Nullable<int> idMarca, string codeUnit, string name, Nullable<bool> divisible, string divisibleCodeUnit, Nullable<int> divisibleNumberParts, Nullable<bool> perishable, Nullable<bool> traceable, string barcodeType, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        public virtual int uspGEProductInsert(Nullable<int> idCategory, Nullable<int> idBrand, string codeUnit, string name, Nullable<bool> divisible, string divisibleCodeUnit, Nullable<int> divisibleNumberParts, Nullable<bool> perishable, Nullable<bool> traceable, string barcodeType, string user, ObjectParameter idProduct, ObjectParameter returnCode, ObjectParameter returnMessage)
         {
             var idCategoryParameter = idCategory.HasValue ?
                 new ObjectParameter("idCategory", idCategory) :
                 new ObjectParameter("idCategory", typeof(int));
     
-            var idMarcaParameter = idMarca.HasValue ?
-                new ObjectParameter("idMarca", idMarca) :
-                new ObjectParameter("idMarca", typeof(int));
+            var idBrandParameter = idBrand.HasValue ?
+                new ObjectParameter("idBrand", idBrand) :
+                new ObjectParameter("idBrand", typeof(int));
     
             var codeUnitParameter = codeUnit != null ?
                 new ObjectParameter("codeUnit", codeUnit) :
@@ -306,7 +306,7 @@ namespace DataAccess
                 new ObjectParameter("user", user) :
                 new ObjectParameter("user", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspGEProductInsert", idCategoryParameter, idMarcaParameter, codeUnitParameter, nameParameter, divisibleParameter, divisibleCodeUnitParameter, divisibleNumberPartsParameter, perishableParameter, traceableParameter, barcodeTypeParameter, userParameter, returnCode, returnMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspGEProductInsert", idCategoryParameter, idBrandParameter, codeUnitParameter, nameParameter, divisibleParameter, divisibleCodeUnitParameter, divisibleNumberPartsParameter, perishableParameter, traceableParameter, barcodeTypeParameter, userParameter, idProduct, returnCode, returnMessage);
         }
     
         public virtual int uspGEProductPriceAuditInsert(Nullable<int> idProduct, Nullable<decimal> purchasePrice, Nullable<decimal> wholesalePrice, Nullable<decimal> wholesaleMinPrice, Nullable<decimal> retailPrice, Nullable<decimal> retailMinPrice, Nullable<decimal> partPrice, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
@@ -531,7 +531,7 @@ namespace DataAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGEProductSearch_Result>("uspGEProductSearch", userParameter, returnCode, returnMessage);
         }
     
-        public virtual int uspGEProductUpdate(Nullable<int> idProduct, Nullable<int> idCategory, Nullable<int> idMarca, string codeUnit, string name, Nullable<bool> divisible, string divisibleCodeUnit, Nullable<int> divisibleNumberParts, Nullable<bool> perishable, Nullable<bool> traceable, string barcodeType, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        public virtual int uspGEProductUpdate(Nullable<int> idProduct, Nullable<int> idCategory, Nullable<int> idBrand, string codeUnit, string name, Nullable<bool> divisible, string divisibleCodeUnit, Nullable<int> divisibleNumberParts, Nullable<bool> perishable, Nullable<bool> traceable, string barcodeType, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
         {
             var idProductParameter = idProduct.HasValue ?
                 new ObjectParameter("idProduct", idProduct) :
@@ -541,9 +541,9 @@ namespace DataAccess
                 new ObjectParameter("idCategory", idCategory) :
                 new ObjectParameter("idCategory", typeof(int));
     
-            var idMarcaParameter = idMarca.HasValue ?
-                new ObjectParameter("idMarca", idMarca) :
-                new ObjectParameter("idMarca", typeof(int));
+            var idBrandParameter = idBrand.HasValue ?
+                new ObjectParameter("idBrand", idBrand) :
+                new ObjectParameter("idBrand", typeof(int));
     
             var codeUnitParameter = codeUnit != null ?
                 new ObjectParameter("codeUnit", codeUnit) :
@@ -581,7 +581,7 @@ namespace DataAccess
                 new ObjectParameter("user", user) :
                 new ObjectParameter("user", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspGEProductUpdate", idProductParameter, idCategoryParameter, idMarcaParameter, codeUnitParameter, nameParameter, divisibleParameter, divisibleCodeUnitParameter, divisibleNumberPartsParameter, perishableParameter, traceableParameter, barcodeTypeParameter, userParameter, returnCode, returnMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspGEProductUpdate", idProductParameter, idCategoryParameter, idBrandParameter, codeUnitParameter, nameParameter, divisibleParameter, divisibleCodeUnitParameter, divisibleNumberPartsParameter, perishableParameter, traceableParameter, barcodeTypeParameter, userParameter, returnCode, returnMessage);
         }
     
         public virtual int uspGEStoreDelete(Nullable<int> idStore, string user, ObjectParameter returnCode, ObjectParameter returnMessage)

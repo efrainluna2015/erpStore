@@ -1,6 +1,7 @@
 ﻿using Entity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,16 +31,33 @@ namespace DataAccess
             }
         }
 
-        public ENResult insert(uspGEProductSearch_Result data)
+        public ENResult insert(uspGEProductSearch_Result data, IList<ENProductProperty> listProperty)
         {
             try
             {
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
-                    db.uspGEProductInsert(data.idCategory,data.idMarca, data.codeUnit, data.name, data.divisible,
+                    ObjectParameter objIdProduct = new ObjectParameter("idProduct", 0);
+                    db.uspGEProductInsert(data.idCategory,data.idBrand, data.codeUnit, data.name, data.divisible,
                         data.divisibleCodeUnit,data.divisibleNumberParts,data.perishable,data.traceable,data.barcodeType,
-                        PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
+                        PUser, objIdProduct, PReturnCode, PReturnMessage);
+                    if (Convert.ToInt32(PReturnCode.Value) == 0)
+                    {
+                        for(int i = 0; i < listProperty.Count; i++)
+                        {
+                            ENProductProperty temp = listProperty[i];
+                            db.uspGEProductPropertyInsert(Convert.ToInt32(objIdProduct.Value), temp.name, temp.abbreviation, temp.required, PUser, PReturnCode, PReturnMessage);
+                            if (Convert.ToInt32(PReturnCode.Value) != 0)
+                            {
+                                break;
+                            }
+                        }
+                        return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));   
+                    }
+                    else
+                    {
+                        return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
+                    }
                 }
             }
             catch (Exception ex)
@@ -54,9 +72,9 @@ namespace DataAccess
             {
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
-                    db.uspGEProductUpdate(data.idProduct, data.idCategory, data.idMarca, data.codeUnit, data.name, data.divisible,
+                    db.uspGEProductUpdate(data.idProduct, data.idCategory, data.idBrand, data.codeUnit, data.name, data.divisible,
                         data.divisibleCodeUnit, data.divisibleNumberParts, data.perishable, data.traceable, data.barcodeType,
-                        data.userUpdated, PReturnCode, PReturnMessage);
+                        PUser, PReturnCode, PReturnMessage);
                     return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }

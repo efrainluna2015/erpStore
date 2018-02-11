@@ -16,7 +16,7 @@ namespace DataAccess
     {
         public int idProduct { get; set; }
         public int idCategory { get; set; }
-        public int idMarca { get; set; }
+        public int idBrand { get; set; }
         public string codeUnit { get; set; }
         public string name { get; set; }
         public bool divisible { get; set; }

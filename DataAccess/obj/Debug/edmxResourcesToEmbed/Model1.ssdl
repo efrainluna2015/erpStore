@@ -54,7 +54,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
     </Key>
     <Property Name="idProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idCategory" Type="int" Nullable="false" />
-    <Property Name="idMarca" Type="int" Nullable="false" />
+    <Property Name="idBrand" Type="int" Nullable="false" />
     <Property Name="codeUnit" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="divisible" Type="bit" Nullable="false" />
@@ -414,7 +414,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
   </Function>
   <Function Name="uspGEProductInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idCategory" Type="int" Mode="In" />
-    <Parameter Name="idMarca" Type="int" Mode="In" />
+    <Parameter Name="idBrand" Type="int" Mode="In" />
     <Parameter Name="codeUnit" Type="varchar" Mode="In" />
     <Parameter Name="name" Type="varchar" Mode="In" />
     <Parameter Name="divisible" Type="bit" Mode="In" />
@@ -424,6 +424,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
     <Parameter Name="traceable" Type="bit" Mode="In" />
     <Parameter Name="barcodeType" Type="varchar" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="idProduct" Type="int" Mode="InOut" />
     <Parameter Name="returnCode" Type="int" Mode="InOut" />
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
   </Function>
@@ -513,7 +514,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
   <Function Name="uspGEProductUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idProduct" Type="int" Mode="In" />
     <Parameter Name="idCategory" Type="int" Mode="In" />
-    <Parameter Name="idMarca" Type="int" Mode="In" />
+    <Parameter Name="idBrand" Type="int" Mode="In" />
     <Parameter Name="codeUnit" Type="varchar" Mode="In" />
     <Parameter Name="name" Type="varchar" Mode="In" />
     <Parameter Name="divisible" Type="bit" Mode="In" />

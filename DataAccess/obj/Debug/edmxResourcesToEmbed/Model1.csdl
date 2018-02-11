@@ -40,7 +40,7 @@
     </Key>
     <Property Name="idProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idCategory" Type="Int32" Nullable="false" />
-    <Property Name="idMarca" Type="Int32" Nullable="false" />
+    <Property Name="idBrand" Type="Int32" Nullable="false" />
     <Property Name="codeUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="divisible" Type="Boolean" Nullable="false" />
@@ -437,7 +437,7 @@
     </FunctionImport>
     <FunctionImport Name="uspGEProductInsert">
       <Parameter Name="idCategory" Mode="In" Type="Int32" />
-      <Parameter Name="idMarca" Mode="In" Type="Int32" />
+      <Parameter Name="idBrand" Mode="In" Type="Int32" />
       <Parameter Name="codeUnit" Mode="In" Type="String" />
       <Parameter Name="name" Mode="In" Type="String" />
       <Parameter Name="divisible" Mode="In" Type="Boolean" />
@@ -447,6 +447,7 @@
       <Parameter Name="traceable" Mode="In" Type="Boolean" />
       <Parameter Name="barcodeType" Mode="In" Type="String" />
       <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="idProduct" Mode="InOut" Type="Int32" />
       <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
       <Parameter Name="returnMessage" Mode="InOut" Type="String" />
     </FunctionImport>
@@ -536,7 +537,7 @@
     <FunctionImport Name="uspGEProductUpdate">
       <Parameter Name="idProduct" Mode="In" Type="Int32" />
       <Parameter Name="idCategory" Mode="In" Type="Int32" />
-      <Parameter Name="idMarca" Mode="In" Type="Int32" />
+      <Parameter Name="idBrand" Mode="In" Type="Int32" />
       <Parameter Name="codeUnit" Mode="In" Type="String" />
       <Parameter Name="name" Mode="In" Type="String" />
       <Parameter Name="divisible" Mode="In" Type="Boolean" />
@@ -1036,7 +1037,7 @@
   <ComplexType Name="uspGEProductSearch_Result">
     <Property Type="Int32" Name="idProduct" Nullable="false" />
     <Property Type="Int32" Name="idCategory" Nullable="false" />
-    <Property Type="Int32" Name="idMarca" Nullable="false" />
+    <Property Type="Int32" Name="idBrand" Nullable="false" />
     <Property Type="String" Name="codeUnit" Nullable="false" MaxLength="20" />
     <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
     <Property Type="Boolean" Name="divisible" Nullable="false" />
@@ -1133,8 +1134,8 @@
     <Property Type="Int32" Name="idStore" Nullable="false" />
     <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
     <Property Type="String" Name="lastname" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="profileName" Nullable="false" MaxLength="100" />
-    <Property Type="String" Name="storeName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="profileName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="storeName" Nullable="true" MaxLength="100" />
   </ComplexType>
   <ComplexType Name="uspSEUserProfileActionSearch_Result">
     <Property Type="String" Name="code" Nullable="false" MaxLength="6" />

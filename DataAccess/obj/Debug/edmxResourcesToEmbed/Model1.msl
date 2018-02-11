@@ -43,7 +43,7 @@
         <MappingFragment StoreEntitySet="GEProduct">
           <ScalarProperty Name="idProduct" ColumnName="idProduct" />
           <ScalarProperty Name="idCategory" ColumnName="idCategory" />
-          <ScalarProperty Name="idMarca" ColumnName="idMarca" />
+          <ScalarProperty Name="idBrand" ColumnName="idBrand" />
           <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="divisible" ColumnName="divisible" />
@@ -434,7 +434,7 @@
         <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEProductSearch_Result">
           <ScalarProperty Name="idProduct" ColumnName="idProduct" />
           <ScalarProperty Name="idCategory" ColumnName="idCategory" />
-          <ScalarProperty Name="idMarca" ColumnName="idMarca" />
+          <ScalarProperty Name="idBrand" ColumnName="idBrand" />
           <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="divisible" ColumnName="divisible" />

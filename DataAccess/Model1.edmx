@@ -59,7 +59,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           </Key>
           <Property Name="idProduct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idCategory" Type="int" Nullable="false" />
-          <Property Name="idMarca" Type="int" Nullable="false" />
+          <Property Name="idBrand" Type="int" Nullable="false" />
           <Property Name="codeUnit" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="divisible" Type="bit" Nullable="false" />
@@ -419,7 +419,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
         </Function>
         <Function Name="uspGEProductInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idCategory" Type="int" Mode="In" />
-          <Parameter Name="idMarca" Type="int" Mode="In" />
+          <Parameter Name="idBrand" Type="int" Mode="In" />
           <Parameter Name="codeUnit" Type="varchar" Mode="In" />
           <Parameter Name="name" Type="varchar" Mode="In" />
           <Parameter Name="divisible" Type="bit" Mode="In" />
@@ -429,6 +429,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           <Parameter Name="traceable" Type="bit" Mode="In" />
           <Parameter Name="barcodeType" Type="varchar" Mode="In" />
           <Parameter Name="user" Type="varchar" Mode="In" />
+          <Parameter Name="idProduct" Type="int" Mode="InOut" />
           <Parameter Name="returnCode" Type="int" Mode="InOut" />
           <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
         </Function>
@@ -518,7 +519,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
         <Function Name="uspGEProductUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idProduct" Type="int" Mode="In" />
           <Parameter Name="idCategory" Type="int" Mode="In" />
-          <Parameter Name="idMarca" Type="int" Mode="In" />
+          <Parameter Name="idBrand" Type="int" Mode="In" />
           <Parameter Name="codeUnit" Type="varchar" Mode="In" />
           <Parameter Name="name" Type="varchar" Mode="In" />
           <Parameter Name="divisible" Type="bit" Mode="In" />
@@ -1043,7 +1044,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           </Key>
           <Property Name="idProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idCategory" Type="Int32" Nullable="false" />
-          <Property Name="idMarca" Type="Int32" Nullable="false" />
+          <Property Name="idBrand" Type="Int32" Nullable="false" />
           <Property Name="codeUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="divisible" Type="Boolean" Nullable="false" />
@@ -1440,7 +1441,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           </FunctionImport>
           <FunctionImport Name="uspGEProductInsert">
             <Parameter Name="idCategory" Mode="In" Type="Int32" />
-            <Parameter Name="idMarca" Mode="In" Type="Int32" />
+            <Parameter Name="idBrand" Mode="In" Type="Int32" />
             <Parameter Name="codeUnit" Mode="In" Type="String" />
             <Parameter Name="name" Mode="In" Type="String" />
             <Parameter Name="divisible" Mode="In" Type="Boolean" />
@@ -1450,6 +1451,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
             <Parameter Name="traceable" Mode="In" Type="Boolean" />
             <Parameter Name="barcodeType" Mode="In" Type="String" />
             <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="idProduct" Mode="InOut" Type="Int32" />
             <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
             <Parameter Name="returnMessage" Mode="InOut" Type="String" />
           </FunctionImport>
@@ -1539,7 +1541,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           <FunctionImport Name="uspGEProductUpdate">
             <Parameter Name="idProduct" Mode="In" Type="Int32" />
             <Parameter Name="idCategory" Mode="In" Type="Int32" />
-            <Parameter Name="idMarca" Mode="In" Type="Int32" />
+            <Parameter Name="idBrand" Mode="In" Type="Int32" />
             <Parameter Name="codeUnit" Mode="In" Type="String" />
             <Parameter Name="name" Mode="In" Type="String" />
             <Parameter Name="divisible" Mode="In" Type="Boolean" />
@@ -2039,7 +2041,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
         <ComplexType Name="uspGEProductSearch_Result">
           <Property Type="Int32" Name="idProduct" Nullable="false" />
           <Property Type="Int32" Name="idCategory" Nullable="false" />
-          <Property Type="Int32" Name="idMarca" Nullable="false" />
+          <Property Type="Int32" Name="idBrand" Nullable="false" />
           <Property Type="String" Name="codeUnit" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
           <Property Type="Boolean" Name="divisible" Nullable="false" />
@@ -2136,8 +2138,8 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           <Property Type="Int32" Name="idStore" Nullable="false" />
           <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="lastname" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="profileName" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="storeName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="profileName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="storeName" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="uspSEUserProfileActionSearch_Result">
           <Property Type="String" Name="code" Nullable="false" MaxLength="6" />
@@ -2256,7 +2258,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
               <MappingFragment StoreEntitySet="GEProduct">
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
                 <ScalarProperty Name="idCategory" ColumnName="idCategory" />
-                <ScalarProperty Name="idMarca" ColumnName="idMarca" />
+                <ScalarProperty Name="idBrand" ColumnName="idBrand" />
                 <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="divisible" ColumnName="divisible" />
@@ -2647,7 +2649,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
               <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEProductSearch_Result">
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
                 <ScalarProperty Name="idCategory" ColumnName="idCategory" />
-                <ScalarProperty Name="idMarca" ColumnName="idMarca" />
+                <ScalarProperty Name="idBrand" ColumnName="idBrand" />
                 <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="divisible" ColumnName="divisible" />

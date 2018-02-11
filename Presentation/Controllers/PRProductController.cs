@@ -35,9 +35,9 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public JsonResult insert(int idCategory, int idMarca, string codeUnit, string name, bool divisible,
+        public JsonResult insert(int idCategory, int idBrand, string codeUnit, string name, bool divisible,
                         string divisibleCodeUnit, int divisibleNumberParts, bool perishable, bool traceable, 
-                        string barcodeType)
+                        string barcodeType, IList<ENProductProperty> listProperty)
         {
             try
             {
@@ -45,17 +45,31 @@ namespace Presentation.Controllers
                 {
                     uspGEProductSearch_Result data = new uspGEProductSearch_Result();
                     data.idCategory = idCategory;
-                    data.idMarca = idMarca;
+                    data.idBrand = idBrand;
                     data.codeUnit = codeUnit;
                     data.name = name;
                     data.divisible = divisible;
-                    data.divisibleCodeUnit = divisibleCodeUnit;
-                    data.divisibleNumberParts = divisibleNumberParts;
+                    if(divisibleCodeUnit == "")
+                    {
+                        data.divisibleCodeUnit = null;
+                    }
+                    else
+                    {
+                        data.divisibleCodeUnit = divisibleCodeUnit;
+                    }
+                    if (divisibleNumberParts == 0)
+                    {
+                        data.divisibleNumberParts = null;
+                    }
+                    else
+                    {
+                        data.divisibleNumberParts = divisibleNumberParts;
+                    }
                     data.perishable = perishable;
                     data.traceable = traceable;
                     data.barcodeType = barcodeType;
                     DAProduct product = new DAProduct(PUser);
-                    ENResult result = product.insert(data);
+                    ENResult result = product.insert(data, listProperty);
                     result.token = PCreateToken();
                     return Json(result);
                 }
@@ -71,7 +85,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public JsonResult update(int id, int idCategory, int idMarca, string codeUnit, string name, bool divisible,
+        public JsonResult update(int id, int idCategory, int idBrand, string codeUnit, string name, bool divisible,
                         string divisibleCodeUnit, int divisibleNumberParts, bool perishable, bool traceable,
                         string barcodeType)
         {
@@ -82,7 +96,7 @@ namespace Presentation.Controllers
                     uspGEProductSearch_Result data = new uspGEProductSearch_Result();
                     data.idProduct = id; 
                     data.idCategory = idCategory;
-                    data.idMarca = idMarca;
+                    data.idBrand = idBrand;
                     data.codeUnit = codeUnit;
                     data.name = name;
                     data.divisible = divisible;
