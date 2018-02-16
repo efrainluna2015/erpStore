@@ -46,17 +46,6 @@ namespace Presentation.Controllers
                     data.entryType = entryType;
                     List<uspWAEntryDetailSearch_Result> entryDetail = new List<uspWAEntryDetailSearch_Result>();
                     List<uspWAEntryDetailPropertySearch_Result> entryDetailProperty = new List<uspWAEntryDetailPropertySearch_Result>();
-
-                    for (int i = 0; i < detail.Length; i++)
-                    {
-                        if (detail != null)
-                        {
-                            entryDetail[i].idProduct = Convert.ToInt32(detail);
-                            entryDetail[i].quantity = Convert.ToInt32(detail);
-                            entryDetail[i].purchasePrice = Convert.ToDecimal(detail);
-                            entryDetail[i].dueDate = Convert.ToDateTime(detail);
-                        }
-                    }
                     DAEntry entry = new DAEntry(PUser);
                     ENResult result = entry.insert(data, entryDetail, entryDetailProperty);
                     result.token = PCreateToken();
@@ -74,14 +63,14 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public JsonResult update(int idEntry, int idSource, string entryType, DateTime date)
+        public JsonResult update(int id, int idSource, string entryType, DateTime date)
         {
             try
             {
                 if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspWAEntrySearch_Result data = new uspWAEntrySearch_Result();
-                    data.idEntry = idEntry;
+                    data.idEntry = id;
                     data.idSource = idSource;
                     data.entryType = entryType;
                     data.date = date;

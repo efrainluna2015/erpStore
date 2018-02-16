@@ -1,0 +1,1238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_9CBF45_erpStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ERError">
+    <Key>
+      <PropertyRef Name="idError" />
+    </Key>
+    <Property Name="idError" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="messageError" Type="String" MaxLength="4000" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="userError" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateError" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="nameStoreProcedureError" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GEBrand">
+    <Key>
+      <PropertyRef Name="idBrand" />
+    </Key>
+    <Property Name="idBrand" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="userCreated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="GECategory">
+    <Key>
+      <PropertyRef Name="idCategory" />
+    </Key>
+    <Property Name="idCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="userCreated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="GEProduct">
+    <Key>
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idProduct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCategory" Type="Int32" Nullable="false" />
+    <Property Name="idBrand" Type="Int32" Nullable="false" />
+    <Property Name="codeUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="divisible" Type="Boolean" Nullable="false" />
+    <Property Name="divisibleCodeUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="divisibleNumberParts" Type="Int32" />
+    <Property Name="perishable" Type="Boolean" Nullable="false" />
+    <Property Name="traceable" Type="Boolean" Nullable="false" />
+    <Property Name="barcodeType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="userCreated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="GEProductBarcode">
+    <Key>
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idProduct" Type="Int32" Nullable="false" />
+    <Property Name="barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GEProductPrice">
+    <Key>
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idProduct" Type="Int32" Nullable="false" />
+    <Property Name="purchasePrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="wholesalePrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="wholesaleMinPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="retailPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="retailMinPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="partPrice" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="userCreated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="GEProductPriceAudit">
+    <Key>
+      <PropertyRef Name="idAuditPP" />
+    </Key>
+    <Property Name="idAuditPP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idProduct" Type="Int32" Nullable="false" />
+    <Property Name="purchasePrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="wholesalePrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="wholesaleMinPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="retailPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="retailMinPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="partPrice" Type="Decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="GEProductProperty">
+    <Key>
+      <PropertyRef Name="idProduct" />
+      <PropertyRef Name="idProperty" />
+    </Key>
+    <Property Name="idProduct" Type="Int32" Nullable="false" />
+    <Property Name="idProperty" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="abbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="required" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GEStore">
+    <Key>
+      <PropertyRef Name="idStore" />
+    </Key>
+    <Property Name="idStore" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="processSale" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="userCreated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="GEUnit">
+    <Key>
+      <PropertyRef Name="codeUnit" />
+    </Key>
+    <Property Name="codeUnit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="userCreated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PUSupplier">
+    <Key>
+      <PropertyRef Name="idSupplier" />
+    </Key>
+    <Property Name="idSupplier" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="documentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="documentNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="phoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="contactPerson" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="userCreated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SASale">
+    <Key>
+      <PropertyRef Name="idSale" />
+    </Key>
+    <Property Name="idSale" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="documentType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="documentNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ticket" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="userCreated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SASaleDetail">
+    <Key>
+      <PropertyRef Name="idSale" />
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idSale" Type="Int32" Nullable="false" />
+    <Property Name="idProduct" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="unitPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="partSale" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEAction">
+    <Key>
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="code" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEProfile">
+    <Key>
+      <PropertyRef Name="idProfile" />
+    </Key>
+    <Property Name="idProfile" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="userCreated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SEProfileAction">
+    <Key>
+      <PropertyRef Name="idProfile" />
+      <PropertyRef Name="code" />
+    </Key>
+    <Property Name="idProfile" Type="Int32" Nullable="false" />
+    <Property Name="code" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEUser">
+    <Key>
+      <PropertyRef Name="userName" />
+    </Key>
+    <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idProfile" Type="Int32" Nullable="false" />
+    <Property Name="idStore" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="userCreated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TRCash">
+    <Key>
+      <PropertyRef Name="idCash" />
+    </Key>
+    <Property Name="idCash" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idStore" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="userCreated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TRCashMovement">
+    <Key>
+      <PropertyRef Name="idMovement" />
+    </Key>
+    <Property Name="idMovement" Type="Int32" Nullable="false" />
+    <Property Name="idCash" Type="Int32" Nullable="false" />
+    <Property Name="idSale" Type="Int32" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="movementType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="amount" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="amountOpening" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="amountClosing" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="concept" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="userCreated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="WAEntry">
+    <Key>
+      <PropertyRef Name="idEntry" />
+    </Key>
+    <Property Name="idEntry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idSource" Type="Int32" Nullable="false" />
+    <Property Name="entryType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="userCreated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="WAEntryDetail">
+    <Key>
+      <PropertyRef Name="idEntry" />
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idEntry" Type="Int32" Nullable="false" />
+    <Property Name="idProduct" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="purchasePrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="dueDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="WAEntryDetailProperty">
+    <Key>
+      <PropertyRef Name="idEntry" />
+      <PropertyRef Name="idProduct" />
+      <PropertyRef Name="idProperty" />
+    </Key>
+    <Property Name="idEntry" Type="Int32" Nullable="false" />
+    <Property Name="idProduct" Type="Int32" Nullable="false" />
+    <Property Name="idProperty" Type="Int32" Nullable="false" />
+    <Property Name="value" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="WAProductStock">
+    <Key>
+      <PropertyRef Name="idStore" />
+      <PropertyRef Name="idProduct" />
+    </Key>
+    <Property Name="idStore" Type="Int32" Nullable="false" />
+    <Property Name="idProduct" Type="Int32" Nullable="false" />
+    <Property Name="stock" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="WAProductStockAudit">
+    <Key>
+      <PropertyRef Name="idAuditPS" />
+    </Key>
+    <Property Name="idAuditPS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idStore" Type="Int32" Nullable="false" />
+    <Property Name="idProduct" Type="Int32" Nullable="false" />
+    <Property Name="stock" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="barcode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="GEGlobalParameters">
+    <Key>
+      <PropertyRef Name="IGV" />
+      <PropertyRef Name="percentageMinWholesalePrice" />
+      <PropertyRef Name="percentageMinRetailPrice" />
+    </Key>
+    <Property Name="IGV" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="percentageMinWholesalePrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="percentageMinRetailPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="userUpdated" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="dateUpdated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="erpStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ERError" EntityType="Self.ERError" />
+    <EntitySet Name="GEBrand" EntityType="Self.GEBrand" />
+    <EntitySet Name="GECategory" EntityType="Self.GECategory" />
+    <EntitySet Name="GEProduct" EntityType="Self.GEProduct" />
+    <EntitySet Name="GEProductBarcode" EntityType="Self.GEProductBarcode" />
+    <EntitySet Name="GEProductPrice" EntityType="Self.GEProductPrice" />
+    <EntitySet Name="GEProductPriceAudit" EntityType="Self.GEProductPriceAudit" />
+    <EntitySet Name="GEProductProperty" EntityType="Self.GEProductProperty" />
+    <EntitySet Name="GEStore" EntityType="Self.GEStore" />
+    <EntitySet Name="GEUnit" EntityType="Self.GEUnit" />
+    <EntitySet Name="PUSupplier" EntityType="Self.PUSupplier" />
+    <EntitySet Name="SASale" EntityType="Self.SASale" />
+    <EntitySet Name="SASaleDetail" EntityType="Self.SASaleDetail" />
+    <EntitySet Name="SEAction" EntityType="Self.SEAction" />
+    <EntitySet Name="SEProfile" EntityType="Self.SEProfile" />
+    <EntitySet Name="SEProfileAction" EntityType="Self.SEProfileAction" />
+    <EntitySet Name="SEUser" EntityType="Self.SEUser" />
+    <EntitySet Name="TRCash" EntityType="Self.TRCash" />
+    <EntitySet Name="TRCashMovement" EntityType="Self.TRCashMovement" />
+    <EntitySet Name="WAEntry" EntityType="Self.WAEntry" />
+    <EntitySet Name="WAEntryDetail" EntityType="Self.WAEntryDetail" />
+    <EntitySet Name="WAEntryDetailProperty" EntityType="Self.WAEntryDetailProperty" />
+    <EntitySet Name="WAProductStock" EntityType="Self.WAProductStock" />
+    <EntitySet Name="WAProductStockAudit" EntityType="Self.WAProductStockAudit" />
+    <EntitySet Name="GEGlobalParameters" EntityType="Self.GEGlobalParameters" />
+    <FunctionImport Name="uspERErrorInsert">
+      <Parameter Name="message" Mode="In" Type="String" />
+      <Parameter Name="nameStoreProcedure" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEBrandDelete">
+      <Parameter Name="idBrand" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEBrandInsert">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEBrandSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEBrandSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEBrandUpdate">
+      <Parameter Name="idBrand" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGECategoryDelete">
+      <Parameter Name="idCategory" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGECategoryInsert">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGECategorySearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGECategorySearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGECategoryUpdate">
+      <Parameter Name="idCategory" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEGlobalParametersSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEGlobalParametersSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEGlobalParametersUpdate">
+      <Parameter Name="igv" Mode="In" Type="Decimal" />
+      <Parameter Name="percentageMinWholesalePrice" Mode="In" Type="Decimal" />
+      <Parameter Name="percentageMinRetailPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductBarcodeDelete">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="barcode" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductBarcodeInsert">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="barcode" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductBarcodeSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEProductBarcodeSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductCategorySearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEProductCategorySearch_Result)">
+      <Parameter Name="idCategory" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductDelete">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductInsert">
+      <Parameter Name="idCategory" Mode="In" Type="Int32" />
+      <Parameter Name="idBrand" Mode="In" Type="Int32" />
+      <Parameter Name="codeUnit" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="divisible" Mode="In" Type="Boolean" />
+      <Parameter Name="divisibleCodeUnit" Mode="In" Type="String" />
+      <Parameter Name="divisibleNumberParts" Mode="In" Type="Int32" />
+      <Parameter Name="perishable" Mode="In" Type="Boolean" />
+      <Parameter Name="traceable" Mode="In" Type="Boolean" />
+      <Parameter Name="barcodeType" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="idProduct" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductPriceAuditInsert">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="purchasePrice" Mode="In" Type="Decimal" />
+      <Parameter Name="wholesalePrice" Mode="In" Type="Decimal" />
+      <Parameter Name="wholesaleMinPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="retailPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="retailMinPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="partPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductPriceDelete">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductPriceInsert">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="purchasePrice" Mode="In" Type="Decimal" />
+      <Parameter Name="wholesalePrice" Mode="In" Type="Decimal" />
+      <Parameter Name="wholesaleMinPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="retailPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="retailMinPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="partPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductPriceSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEProductPriceSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductPriceUpdate">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="purchasePrice" Mode="In" Type="Decimal" />
+      <Parameter Name="wholesalePrice" Mode="In" Type="Decimal" />
+      <Parameter Name="wholesaleMinPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="retailPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="retailMinPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="partPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductPropertyDelete">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="idProductProperty" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductPropertyInsert">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="abbreviation" Mode="In" Type="String" />
+      <Parameter Name="required" Mode="In" Type="Boolean" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductPropertySearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEProductPropertySearch_Result)">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductPropertyUpdate">
+      <Parameter Name="idProductProperty" Mode="In" Type="Int32" />
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="abbreviation" Mode="In" Type="String" />
+      <Parameter Name="required" Mode="In" Type="Boolean" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEProductSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductUpdate">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="idCategory" Mode="In" Type="Int32" />
+      <Parameter Name="idBrand" Mode="In" Type="Int32" />
+      <Parameter Name="codeUnit" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="divisible" Mode="In" Type="Boolean" />
+      <Parameter Name="divisibleCodeUnit" Mode="In" Type="String" />
+      <Parameter Name="divisibleNumberParts" Mode="In" Type="Int32" />
+      <Parameter Name="perishable" Mode="In" Type="Boolean" />
+      <Parameter Name="traceable" Mode="In" Type="Boolean" />
+      <Parameter Name="barcodeType" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEStoreDelete">
+      <Parameter Name="idStore" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEStoreInsert">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="processSale" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEStoreSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEStoreSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEStoreUpdate">
+      <Parameter Name="idStore" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="processSale" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEUnitDelete">
+      <Parameter Name="codeUnit" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEUnitInsert">
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEUnitSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEUnitSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEUnitUpdate">
+      <Parameter Name="codeUnitOld" Mode="In" Type="String" />
+      <Parameter Name="codeUnitNew" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspPUSupplierDelete">
+      <Parameter Name="idSupplier" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspPUSupplierInsert">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="documentType" Mode="In" Type="String" />
+      <Parameter Name="documentNumber" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="contactPerson" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspPUSupplierSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspPUSupplierSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspPUSupplierUpdate">
+      <Parameter Name="idSupplier" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="documentType" Mode="In" Type="String" />
+      <Parameter Name="documentNumber" Mode="In" Type="String" />
+      <Parameter Name="address" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="contactPerson" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSASaleDelete">
+      <Parameter Name="idSale" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSASaleDetailDelete">
+      <Parameter Name="idSale" Mode="In" Type="Int32" />
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSASaleDetailInsert">
+      <Parameter Name="idSale" Mode="In" Type="Int32" />
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="unitPrice" Mode="In" Type="Decimal" />
+      <Parameter Name="partSale" Mode="In" Type="Boolean" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSASaleDetailSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspSASaleDetailSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSASaleInsert">
+      <Parameter Name="documentType" Mode="In" Type="String" />
+      <Parameter Name="documentNumber" Mode="In" Type="String" />
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+      <Parameter Name="ticket" Mode="In" Type="Int32" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="idSale" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSASaleSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspSASaleSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSASaleUpdate">
+      <Parameter Name="idSale" Mode="In" Type="Int32" />
+      <Parameter Name="documentType" Mode="In" Type="String" />
+      <Parameter Name="documentNumber" Mode="In" Type="String" />
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+      <Parameter Name="status" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEActionDelete">
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEActionInsert">
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEActionSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspSEActionSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEActionUpdate">
+      <Parameter Name="codeOld" Mode="In" Type="String" />
+      <Parameter Name="codeNew" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEProfileActionDelete">
+      <Parameter Name="idProfile" Mode="In" Type="Int32" />
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEProfileActionInsert">
+      <Parameter Name="idProfile" Mode="In" Type="Int32" />
+      <Parameter Name="code" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEProfileActionSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspSEProfileActionSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEProfileDelete">
+      <Parameter Name="idProfile" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEProfileInsert">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEProfileSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspSEProfileSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEProfileUpdate">
+      <Parameter Name="idProfile" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEUserDelete">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEUserInsert">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="idProfile" Mode="In" Type="Int32" />
+      <Parameter Name="idStore" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="Binary" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEUserLogin" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspSEUserLogin_Result)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEUserProfileActionSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspSEUserProfileActionSearch_Result)">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEUserSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspSEUserSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEUserUpdate">
+      <Parameter Name="userOld" Mode="In" Type="String" />
+      <Parameter Name="userNew" Mode="In" Type="String" />
+      <Parameter Name="idProfile" Mode="In" Type="Int32" />
+      <Parameter Name="idStore" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="lastname" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspSEUserUpdatePassword">
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="passNew" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspTRCashDelete">
+      <Parameter Name="idCash" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspTRCashInsert">
+      <Parameter Name="idStore" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspTRCashMovementDelete">
+      <Parameter Name="idMovement" Mode="In" Type="Int32" />
+      <Parameter Name="idCash" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspTRCashMovementInsert">
+      <Parameter Name="idMovement" Mode="In" Type="Int32" />
+      <Parameter Name="idCash" Mode="In" Type="Int32" />
+      <Parameter Name="idSale" Mode="In" Type="Int32" />
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+      <Parameter Name="movementType" Mode="In" Type="String" />
+      <Parameter Name="amount" Mode="In" Type="Decimal" />
+      <Parameter Name="amountOpening" Mode="In" Type="Decimal" />
+      <Parameter Name="amountClosing" Mode="In" Type="Decimal" />
+      <Parameter Name="concept" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspTRCashMovementSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspTRCashMovementSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspTRCashMovementUpdate">
+      <Parameter Name="idMovement" Mode="In" Type="Int32" />
+      <Parameter Name="idCash" Mode="In" Type="Int32" />
+      <Parameter Name="idSale" Mode="In" Type="Int32" />
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+      <Parameter Name="movementType" Mode="In" Type="String" />
+      <Parameter Name="amount" Mode="In" Type="Decimal" />
+      <Parameter Name="amountOpening" Mode="In" Type="Decimal" />
+      <Parameter Name="amountClosing" Mode="In" Type="Decimal" />
+      <Parameter Name="concept" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspTRCashSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspTRCashSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspTRCashUpdate">
+      <Parameter Name="idCash" Mode="In" Type="Int32" />
+      <Parameter Name="idStore" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspWAEntryDelete">
+      <Parameter Name="idEntry" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspWAEntryDetailDelete">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="idEntry" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspWAEntryDetailInsert">
+      <Parameter Name="idEntry" Mode="In" Type="Int32" />
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="purchasePrice" Mode="In" Type="Decimal" />
+      <Parameter Name="dueDate" Mode="In" Type="DateTime" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspWAEntryDetailPropertyDelete">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="idEntry" Mode="In" Type="Int32" />
+      <Parameter Name="idProperty" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspWAEntryDetailPropertyInsert">
+      <Parameter Name="idEntry" Mode="In" Type="Int32" />
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="idProperty" Mode="In" Type="Int32" />
+      <Parameter Name="value" Mode="In" Type="String" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspWAEntryDetailPropertySearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspWAEntryDetailPropertySearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspWAEntryDetailSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspWAEntryDetailSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspWAEntryInsert">
+      <Parameter Name="idSource" Mode="In" Type="Int32" />
+      <Parameter Name="entryType" Mode="In" Type="String" />
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="idEntry" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspWAEntrySearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspWAEntrySearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspWAEntryUpdate">
+      <Parameter Name="idEntry" Mode="In" Type="Int32" />
+      <Parameter Name="idSource" Mode="In" Type="Int32" />
+      <Parameter Name="entryType" Mode="In" Type="String" />
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspWAProductStockAuditInsert">
+      <Parameter Name="idStore" Mode="In" Type="Int32" />
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="stock" Mode="In" Type="Decimal" />
+      <Parameter Name="barcode" Mode="In" Type="String" />
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspWAProductStockInsert">
+      <Parameter Name="idStore" Mode="In" Type="Int32" />
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="stock" Mode="In" Type="Decimal" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="barcode" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspWAProductStockUpdate">
+      <Parameter Name="idStore" Mode="In" Type="Int32" />
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="stock" Mode="In" Type="Decimal" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="uspGEBrandSearch_Result">
+    <Property Type="Int32" Name="idBrand" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspGECategorySearch_Result">
+    <Property Type="Int32" Name="idCategory" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspGEGlobalParametersSearch_Result">
+    <Property Type="Decimal" Name="IGV" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="percentageMinWholesalePrice" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="percentageMinRetailPrice" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspGEProductBarcodeSearch_Result">
+    <Property Type="Int32" Name="idProduct" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="barcode" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="uspGEProductCategorySearch_Result">
+    <Property Type="Int32" Name="idProduct" Nullable="false" />
+    <Property Type="Int32" Name="idCategory" Nullable="false" />
+    <Property Type="Int32" Name="idBrand" Nullable="false" />
+    <Property Type="String" Name="codeUnit" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="divisible" Nullable="false" />
+    <Property Type="String" Name="divisibleCodeUnit" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="divisibleNumberParts" Nullable="true" />
+    <Property Type="Boolean" Name="perishable" Nullable="false" />
+    <Property Type="Boolean" Name="traceable" Nullable="false" />
+    <Property Type="String" Name="barcodeType" Nullable="false" MaxLength="20" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="category" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="brand" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="uspGEProductPriceSearch_Result">
+    <Property Type="Int32" Name="idProduct" Nullable="false" />
+    <Property Type="Decimal" Name="purchasePrice" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="wholesalePrice" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="wholesaleMinPrice" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="retailPrice" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="retailMinPrice" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="partPrice" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspGEProductPropertySearch_Result">
+    <Property Type="Int32" Name="idProduct" Nullable="false" />
+    <Property Type="Int32" Name="idProperty" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="abbreviation" Nullable="false" MaxLength="10" />
+    <Property Type="Boolean" Name="required" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="uspGEProductSearch_Result">
+    <Property Type="Int32" Name="idProduct" Nullable="false" />
+    <Property Type="Int32" Name="idCategory" Nullable="false" />
+    <Property Type="Int32" Name="idBrand" Nullable="false" />
+    <Property Type="String" Name="codeUnit" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="divisible" Nullable="false" />
+    <Property Type="String" Name="divisibleCodeUnit" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="divisibleNumberParts" Nullable="true" />
+    <Property Type="Boolean" Name="perishable" Nullable="false" />
+    <Property Type="Boolean" Name="traceable" Nullable="false" />
+    <Property Type="String" Name="barcodeType" Nullable="false" MaxLength="20" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="category" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="brand" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="uspGEStoreSearch_Result">
+    <Property Type="Int32" Name="idStore" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="processSale" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspGEUnitSearch_Result">
+    <Property Type="String" Name="codeUnit" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspPUSupplierSearch_Result">
+    <Property Type="Int32" Name="idSupplier" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="documentType" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="documentNumber" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="phoneNumber" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="email" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="contactPerson" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspSASaleDetailSearch_Result">
+    <Property Type="Int32" Name="idSale" Nullable="false" />
+    <Property Type="Int32" Name="idProduct" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="unit" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="quantity" Nullable="false" />
+    <Property Type="Decimal" Name="unitPrice" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Boolean" Name="partSale" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="uspSASaleSearch_Result">
+    <Property Type="Int32" Name="idSale" Nullable="false" />
+    <Property Type="String" Name="documentType" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="documentNumber" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="date" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="ticket" Nullable="false" />
+    <Property Type="String" Name="status" Nullable="false" MaxLength="20" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspSEActionSearch_Result">
+    <Property Type="String" Name="code" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="uspSEProfileActionSearch_Result">
+    <Property Type="Int32" Name="idProfile" Nullable="false" />
+    <Property Type="String" Name="profile" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="code" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="action" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="uspSEProfileSearch_Result">
+    <Property Type="Int32" Name="idProfile" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspSEUserLogin_Result">
+    <Property Type="String" Name="userName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="idProfile" Nullable="false" />
+    <Property Type="Int32" Name="idStore" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="lastname" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="profileName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="storeName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="uspSEUserProfileActionSearch_Result">
+    <Property Type="String" Name="code" Nullable="false" MaxLength="6" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="uspSEUserSearch_Result">
+    <Property Type="String" Name="userName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="idProfile" Nullable="false" />
+    <Property Type="Int32" Name="idStore" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="lastname" Nullable="false" MaxLength="100" />
+    <Property Type="Binary" Name="password" Nullable="false" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspTRCashMovementSearch_Result">
+    <Property Type="Int32" Name="idMovement" Nullable="false" />
+    <Property Type="Int32" Name="idCash" Nullable="false" />
+    <Property Type="Int32" Name="idSale" Nullable="true" />
+    <Property Type="DateTime" Name="date" Nullable="false" Precision="23" />
+    <Property Type="String" Name="movementType" Nullable="false" MaxLength="20" />
+    <Property Type="Decimal" Name="amount" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="amountOpening" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="amountClosing" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="String" Name="concept" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspTRCashSearch_Result">
+    <Property Type="Int32" Name="idCash" Nullable="false" />
+    <Property Type="Int32" Name="idStore" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspWAEntryDetailPropertySearch_Result">
+    <Property Type="Int32" Name="idEntry" Nullable="false" />
+    <Property Type="Int32" Name="idProduct" Nullable="false" />
+    <Property Type="Int32" Name="idProperty" Nullable="false" />
+    <Property Type="String" Name="property" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="value" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="uspWAEntryDetailSearch_Result">
+    <Property Type="Int32" Name="idEntry" Nullable="false" />
+    <Property Type="Int32" Name="idProduct" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="quantity" Nullable="false" />
+    <Property Type="Decimal" Name="purchasePrice" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="DateTime" Name="dueDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="uspWAEntrySearch_Result">
+    <Property Type="Int32" Name="idEntry" Nullable="false" />
+    <Property Type="Int32" Name="idSource" Nullable="false" />
+    <Property Type="String" Name="entryType" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="date" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+  </ComplexType>
+</Schema>

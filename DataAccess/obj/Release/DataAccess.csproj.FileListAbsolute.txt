@@ -1,0 +1,13 @@
+C:\Users\Betzabe\source\repos\BEErpStore\DataAccess\bin\Release\DataAccess.dll.config
+C:\Users\Betzabe\source\repos\BEErpStore\DataAccess\bin\Release\DataAccess.dll
+C:\Users\Betzabe\source\repos\BEErpStore\DataAccess\bin\Release\DataAccess.pdb
+C:\Users\Betzabe\source\repos\BEErpStore\DataAccess\bin\Release\Entity.dll
+C:\Users\Betzabe\source\repos\BEErpStore\DataAccess\bin\Release\EntityFramework.dll
+C:\Users\Betzabe\source\repos\BEErpStore\DataAccess\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Betzabe\source\repos\BEErpStore\DataAccess\bin\Release\Entity.pdb
+C:\Users\Betzabe\source\repos\BEErpStore\DataAccess\bin\Release\EntityFramework.xml
+C:\Users\Betzabe\source\repos\BEErpStore\DataAccess\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Betzabe\source\repos\BEErpStore\DataAccess\obj\Release\DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\Betzabe\source\repos\BEErpStore\DataAccess\obj\Release\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Betzabe\source\repos\BEErpStore\DataAccess\obj\Release\DataAccess.dll
+C:\Users\Betzabe\source\repos\BEErpStore\DataAccess\obj\Release\DataAccess.pdb

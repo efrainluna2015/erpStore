@@ -1,0 +1,742 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_9CBF45_erpStoreModelStoreContainer" CdmEntityContainer="erpStoreEntities">
+    <EntitySetMapping Name="ERError">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.ERError">
+        <MappingFragment StoreEntitySet="ERError">
+          <ScalarProperty Name="idError" ColumnName="idError" />
+          <ScalarProperty Name="messageError" ColumnName="messageError" />
+          <ScalarProperty Name="userError" ColumnName="userError" />
+          <ScalarProperty Name="dateError" ColumnName="dateError" />
+          <ScalarProperty Name="nameStoreProcedureError" ColumnName="nameStoreProcedureError" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GEBrand">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.GEBrand">
+        <MappingFragment StoreEntitySet="GEBrand">
+          <ScalarProperty Name="idBrand" ColumnName="idBrand" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GECategory">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.GECategory">
+        <MappingFragment StoreEntitySet="GECategory">
+          <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GEProduct">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.GEProduct">
+        <MappingFragment StoreEntitySet="GEProduct">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+          <ScalarProperty Name="idBrand" ColumnName="idBrand" />
+          <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="divisible" ColumnName="divisible" />
+          <ScalarProperty Name="divisibleCodeUnit" ColumnName="divisibleCodeUnit" />
+          <ScalarProperty Name="divisibleNumberParts" ColumnName="divisibleNumberParts" />
+          <ScalarProperty Name="perishable" ColumnName="perishable" />
+          <ScalarProperty Name="traceable" ColumnName="traceable" />
+          <ScalarProperty Name="barcodeType" ColumnName="barcodeType" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GEProductBarcode">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.GEProductBarcode">
+        <MappingFragment StoreEntitySet="GEProductBarcode">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GEProductPrice">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.GEProductPrice">
+        <MappingFragment StoreEntitySet="GEProductPrice">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="purchasePrice" ColumnName="purchasePrice" />
+          <ScalarProperty Name="wholesalePrice" ColumnName="wholesalePrice" />
+          <ScalarProperty Name="wholesaleMinPrice" ColumnName="wholesaleMinPrice" />
+          <ScalarProperty Name="retailPrice" ColumnName="retailPrice" />
+          <ScalarProperty Name="retailMinPrice" ColumnName="retailMinPrice" />
+          <ScalarProperty Name="partPrice" ColumnName="partPrice" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GEProductPriceAudit">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.GEProductPriceAudit">
+        <MappingFragment StoreEntitySet="GEProductPriceAudit">
+          <ScalarProperty Name="idAuditPP" ColumnName="idAuditPP" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="purchasePrice" ColumnName="purchasePrice" />
+          <ScalarProperty Name="wholesalePrice" ColumnName="wholesalePrice" />
+          <ScalarProperty Name="wholesaleMinPrice" ColumnName="wholesaleMinPrice" />
+          <ScalarProperty Name="retailPrice" ColumnName="retailPrice" />
+          <ScalarProperty Name="retailMinPrice" ColumnName="retailMinPrice" />
+          <ScalarProperty Name="partPrice" ColumnName="partPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GEProductProperty">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.GEProductProperty">
+        <MappingFragment StoreEntitySet="GEProductProperty">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idProperty" ColumnName="idProperty" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
+          <ScalarProperty Name="required" ColumnName="required" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GEStore">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.GEStore">
+        <MappingFragment StoreEntitySet="GEStore">
+          <ScalarProperty Name="idStore" ColumnName="idStore" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="processSale" ColumnName="processSale" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GEUnit">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.GEUnit">
+        <MappingFragment StoreEntitySet="GEUnit">
+          <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PUSupplier">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.PUSupplier">
+        <MappingFragment StoreEntitySet="PUSupplier">
+          <ScalarProperty Name="idSupplier" ColumnName="idSupplier" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="documentType" ColumnName="documentType" />
+          <ScalarProperty Name="documentNumber" ColumnName="documentNumber" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="contactPerson" ColumnName="contactPerson" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SASale">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.SASale">
+        <MappingFragment StoreEntitySet="SASale">
+          <ScalarProperty Name="idSale" ColumnName="idSale" />
+          <ScalarProperty Name="documentType" ColumnName="documentType" />
+          <ScalarProperty Name="documentNumber" ColumnName="documentNumber" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="ticket" ColumnName="ticket" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SASaleDetail">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.SASaleDetail">
+        <MappingFragment StoreEntitySet="SASaleDetail">
+          <ScalarProperty Name="idSale" ColumnName="idSale" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
+          <ScalarProperty Name="partSale" ColumnName="partSale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEAction">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.SEAction">
+        <MappingFragment StoreEntitySet="SEAction">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEProfile">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.SEProfile">
+        <MappingFragment StoreEntitySet="SEProfile">
+          <ScalarProperty Name="idProfile" ColumnName="idProfile" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEProfileAction">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.SEProfileAction">
+        <MappingFragment StoreEntitySet="SEProfileAction">
+          <ScalarProperty Name="idProfile" ColumnName="idProfile" />
+          <ScalarProperty Name="code" ColumnName="code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEUser">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.SEUser">
+        <MappingFragment StoreEntitySet="SEUser">
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="idProfile" ColumnName="idProfile" />
+          <ScalarProperty Name="idStore" ColumnName="idStore" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRCash">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.TRCash">
+        <MappingFragment StoreEntitySet="TRCash">
+          <ScalarProperty Name="idCash" ColumnName="idCash" />
+          <ScalarProperty Name="idStore" ColumnName="idStore" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRCashMovement">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.TRCashMovement">
+        <MappingFragment StoreEntitySet="TRCashMovement">
+          <ScalarProperty Name="idMovement" ColumnName="idMovement" />
+          <ScalarProperty Name="idCash" ColumnName="idCash" />
+          <ScalarProperty Name="idSale" ColumnName="idSale" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="movementType" ColumnName="movementType" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="amountOpening" ColumnName="amountOpening" />
+          <ScalarProperty Name="amountClosing" ColumnName="amountClosing" />
+          <ScalarProperty Name="concept" ColumnName="concept" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WAEntry">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.WAEntry">
+        <MappingFragment StoreEntitySet="WAEntry">
+          <ScalarProperty Name="idEntry" ColumnName="idEntry" />
+          <ScalarProperty Name="idSource" ColumnName="idSource" />
+          <ScalarProperty Name="entryType" ColumnName="entryType" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WAEntryDetail">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.WAEntryDetail">
+        <MappingFragment StoreEntitySet="WAEntryDetail">
+          <ScalarProperty Name="idEntry" ColumnName="idEntry" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="purchasePrice" ColumnName="purchasePrice" />
+          <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WAEntryDetailProperty">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.WAEntryDetailProperty">
+        <MappingFragment StoreEntitySet="WAEntryDetailProperty">
+          <ScalarProperty Name="idEntry" ColumnName="idEntry" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idProperty" ColumnName="idProperty" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WAProductStock">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.WAProductStock">
+        <MappingFragment StoreEntitySet="WAProductStock">
+          <ScalarProperty Name="idStore" ColumnName="idStore" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WAProductStockAudit">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.WAProductStockAudit">
+        <MappingFragment StoreEntitySet="WAProductStockAudit">
+          <ScalarProperty Name="idAuditPS" ColumnName="idAuditPS" />
+          <ScalarProperty Name="idStore" ColumnName="idStore" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GEGlobalParameters">
+      <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.GEGlobalParameters">
+        <MappingFragment StoreEntitySet="GEGlobalParameters">
+          <ScalarProperty Name="IGV" ColumnName="IGV" />
+          <ScalarProperty Name="percentageMinWholesalePrice" ColumnName="percentageMinWholesalePrice" />
+          <ScalarProperty Name="percentageMinRetailPrice" ColumnName="percentageMinRetailPrice" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="uspERErrorInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspERErrorInsert" />
+    <FunctionImportMapping FunctionImportName="uspGEBrandDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEBrandDelete" />
+    <FunctionImportMapping FunctionImportName="uspGEBrandInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEBrandInsert" />
+    <FunctionImportMapping FunctionImportName="uspGEBrandSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEBrandSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEBrandSearch_Result">
+          <ScalarProperty Name="idBrand" ColumnName="idBrand" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGEBrandUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEBrandUpdate" />
+    <FunctionImportMapping FunctionImportName="uspGECategoryDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGECategoryDelete" />
+    <FunctionImportMapping FunctionImportName="uspGECategoryInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGECategoryInsert" />
+    <FunctionImportMapping FunctionImportName="uspGECategorySearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGECategorySearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGECategorySearch_Result">
+          <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGECategoryUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGECategoryUpdate" />
+    <FunctionImportMapping FunctionImportName="uspGEGlobalParametersSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEGlobalParametersSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEGlobalParametersSearch_Result">
+          <ScalarProperty Name="IGV" ColumnName="IGV" />
+          <ScalarProperty Name="percentageMinWholesalePrice" ColumnName="percentageMinWholesalePrice" />
+          <ScalarProperty Name="percentageMinRetailPrice" ColumnName="percentageMinRetailPrice" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGEGlobalParametersUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEGlobalParametersUpdate" />
+    <FunctionImportMapping FunctionImportName="uspGEProductBarcodeDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductBarcodeDelete" />
+    <FunctionImportMapping FunctionImportName="uspGEProductBarcodeInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductBarcodeInsert" />
+    <FunctionImportMapping FunctionImportName="uspGEProductBarcodeSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductBarcodeSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEProductBarcodeSearch_Result">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="barcode" ColumnName="barcode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGEProductCategorySearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductCategorySearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEProductCategorySearch_Result">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+          <ScalarProperty Name="idBrand" ColumnName="idBrand" />
+          <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="divisible" ColumnName="divisible" />
+          <ScalarProperty Name="divisibleCodeUnit" ColumnName="divisibleCodeUnit" />
+          <ScalarProperty Name="divisibleNumberParts" ColumnName="divisibleNumberParts" />
+          <ScalarProperty Name="perishable" ColumnName="perishable" />
+          <ScalarProperty Name="traceable" ColumnName="traceable" />
+          <ScalarProperty Name="barcodeType" ColumnName="barcodeType" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGEProductDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductDelete" />
+    <FunctionImportMapping FunctionImportName="uspGEProductInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductInsert" />
+    <FunctionImportMapping FunctionImportName="uspGEProductPriceAuditInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductPriceAuditInsert" />
+    <FunctionImportMapping FunctionImportName="uspGEProductPriceDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductPriceDelete" />
+    <FunctionImportMapping FunctionImportName="uspGEProductPriceInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductPriceInsert" />
+    <FunctionImportMapping FunctionImportName="uspGEProductPriceSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductPriceSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEProductPriceSearch_Result">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="purchasePrice" ColumnName="purchasePrice" />
+          <ScalarProperty Name="wholesalePrice" ColumnName="wholesalePrice" />
+          <ScalarProperty Name="wholesaleMinPrice" ColumnName="wholesaleMinPrice" />
+          <ScalarProperty Name="retailPrice" ColumnName="retailPrice" />
+          <ScalarProperty Name="retailMinPrice" ColumnName="retailMinPrice" />
+          <ScalarProperty Name="partPrice" ColumnName="partPrice" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGEProductPriceUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductPriceUpdate" />
+    <FunctionImportMapping FunctionImportName="uspGEProductPropertyDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductPropertyDelete" />
+    <FunctionImportMapping FunctionImportName="uspGEProductPropertyInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductPropertyInsert" />
+    <FunctionImportMapping FunctionImportName="uspGEProductPropertySearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductPropertySearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEProductPropertySearch_Result">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idProperty" ColumnName="idProperty" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
+          <ScalarProperty Name="required" ColumnName="required" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGEProductPropertyUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductPropertyUpdate" />
+    <FunctionImportMapping FunctionImportName="uspGEProductSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEProductSearch_Result">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+          <ScalarProperty Name="idBrand" ColumnName="idBrand" />
+          <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="divisible" ColumnName="divisible" />
+          <ScalarProperty Name="divisibleCodeUnit" ColumnName="divisibleCodeUnit" />
+          <ScalarProperty Name="divisibleNumberParts" ColumnName="divisibleNumberParts" />
+          <ScalarProperty Name="perishable" ColumnName="perishable" />
+          <ScalarProperty Name="traceable" ColumnName="traceable" />
+          <ScalarProperty Name="barcodeType" ColumnName="barcodeType" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGEProductUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductUpdate" />
+    <FunctionImportMapping FunctionImportName="uspGEStoreDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEStoreDelete" />
+    <FunctionImportMapping FunctionImportName="uspGEStoreInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEStoreInsert" />
+    <FunctionImportMapping FunctionImportName="uspGEStoreSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEStoreSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEStoreSearch_Result">
+          <ScalarProperty Name="idStore" ColumnName="idStore" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="processSale" ColumnName="processSale" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGEStoreUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEStoreUpdate" />
+    <FunctionImportMapping FunctionImportName="uspGEUnitDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEUnitDelete" />
+    <FunctionImportMapping FunctionImportName="uspGEUnitInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEUnitInsert" />
+    <FunctionImportMapping FunctionImportName="uspGEUnitSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEUnitSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEUnitSearch_Result">
+          <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGEUnitUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEUnitUpdate" />
+    <FunctionImportMapping FunctionImportName="uspPUSupplierDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspPUSupplierDelete" />
+    <FunctionImportMapping FunctionImportName="uspPUSupplierInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspPUSupplierInsert" />
+    <FunctionImportMapping FunctionImportName="uspPUSupplierSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspPUSupplierSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspPUSupplierSearch_Result">
+          <ScalarProperty Name="idSupplier" ColumnName="idSupplier" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="documentType" ColumnName="documentType" />
+          <ScalarProperty Name="documentNumber" ColumnName="documentNumber" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="contactPerson" ColumnName="contactPerson" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspPUSupplierUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspPUSupplierUpdate" />
+    <FunctionImportMapping FunctionImportName="uspSASaleDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSASaleDelete" />
+    <FunctionImportMapping FunctionImportName="uspSASaleDetailDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSASaleDetailDelete" />
+    <FunctionImportMapping FunctionImportName="uspSASaleDetailInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSASaleDetailInsert" />
+    <FunctionImportMapping FunctionImportName="uspSASaleDetailSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSASaleDetailSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspSASaleDetailSearch_Result">
+          <ScalarProperty Name="idSale" ColumnName="idSale" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="unitPrice" ColumnName="unitPrice" />
+          <ScalarProperty Name="partSale" ColumnName="partSale" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspSASaleInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSASaleInsert" />
+    <FunctionImportMapping FunctionImportName="uspSASaleSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSASaleSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspSASaleSearch_Result">
+          <ScalarProperty Name="idSale" ColumnName="idSale" />
+          <ScalarProperty Name="documentType" ColumnName="documentType" />
+          <ScalarProperty Name="documentNumber" ColumnName="documentNumber" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="ticket" ColumnName="ticket" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspSASaleUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSASaleUpdate" />
+    <FunctionImportMapping FunctionImportName="uspSEActionDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEActionDelete" />
+    <FunctionImportMapping FunctionImportName="uspSEActionInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEActionInsert" />
+    <FunctionImportMapping FunctionImportName="uspSEActionSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEActionSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspSEActionSearch_Result">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspSEActionUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEActionUpdate" />
+    <FunctionImportMapping FunctionImportName="uspSEProfileActionDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEProfileActionDelete" />
+    <FunctionImportMapping FunctionImportName="uspSEProfileActionInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEProfileActionInsert" />
+    <FunctionImportMapping FunctionImportName="uspSEProfileActionSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEProfileActionSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspSEProfileActionSearch_Result">
+          <ScalarProperty Name="idProfile" ColumnName="idProfile" />
+          <ScalarProperty Name="profile" ColumnName="profile" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="action" ColumnName="action" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspSEProfileDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEProfileDelete" />
+    <FunctionImportMapping FunctionImportName="uspSEProfileInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEProfileInsert" />
+    <FunctionImportMapping FunctionImportName="uspSEProfileSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEProfileSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspSEProfileSearch_Result">
+          <ScalarProperty Name="idProfile" ColumnName="idProfile" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspSEProfileUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEProfileUpdate" />
+    <FunctionImportMapping FunctionImportName="uspSEUserDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEUserDelete" />
+    <FunctionImportMapping FunctionImportName="uspSEUserInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEUserInsert" />
+    <FunctionImportMapping FunctionImportName="uspSEUserLogin" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEUserLogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspSEUserLogin_Result">
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="idProfile" ColumnName="idProfile" />
+          <ScalarProperty Name="idStore" ColumnName="idStore" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="profileName" ColumnName="profileName" />
+          <ScalarProperty Name="storeName" ColumnName="storeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspSEUserProfileActionSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEUserProfileActionSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspSEUserProfileActionSearch_Result">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspSEUserSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEUserSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspSEUserSearch_Result">
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="idProfile" ColumnName="idProfile" />
+          <ScalarProperty Name="idStore" ColumnName="idStore" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="lastname" ColumnName="lastname" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspSEUserUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEUserUpdate" />
+    <FunctionImportMapping FunctionImportName="uspSEUserUpdatePassword" FunctionName="DB_9CBF45_erpStoreModel.Store.uspSEUserUpdatePassword" />
+    <FunctionImportMapping FunctionImportName="uspTRCashDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspTRCashDelete" />
+    <FunctionImportMapping FunctionImportName="uspTRCashInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspTRCashInsert" />
+    <FunctionImportMapping FunctionImportName="uspTRCashMovementDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspTRCashMovementDelete" />
+    <FunctionImportMapping FunctionImportName="uspTRCashMovementInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspTRCashMovementInsert" />
+    <FunctionImportMapping FunctionImportName="uspTRCashMovementSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspTRCashMovementSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspTRCashMovementSearch_Result">
+          <ScalarProperty Name="idMovement" ColumnName="idMovement" />
+          <ScalarProperty Name="idCash" ColumnName="idCash" />
+          <ScalarProperty Name="idSale" ColumnName="idSale" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="movementType" ColumnName="movementType" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="amountOpening" ColumnName="amountOpening" />
+          <ScalarProperty Name="amountClosing" ColumnName="amountClosing" />
+          <ScalarProperty Name="concept" ColumnName="concept" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspTRCashMovementUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspTRCashMovementUpdate" />
+    <FunctionImportMapping FunctionImportName="uspTRCashSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspTRCashSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspTRCashSearch_Result">
+          <ScalarProperty Name="idCash" ColumnName="idCash" />
+          <ScalarProperty Name="idStore" ColumnName="idStore" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspTRCashUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspTRCashUpdate" />
+    <FunctionImportMapping FunctionImportName="uspWAEntryDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspWAEntryDelete" />
+    <FunctionImportMapping FunctionImportName="uspWAEntryDetailDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspWAEntryDetailDelete" />
+    <FunctionImportMapping FunctionImportName="uspWAEntryDetailInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspWAEntryDetailInsert" />
+    <FunctionImportMapping FunctionImportName="uspWAEntryDetailPropertyDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspWAEntryDetailPropertyDelete" />
+    <FunctionImportMapping FunctionImportName="uspWAEntryDetailPropertyInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspWAEntryDetailPropertyInsert" />
+    <FunctionImportMapping FunctionImportName="uspWAEntryDetailPropertySearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspWAEntryDetailPropertySearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspWAEntryDetailPropertySearch_Result">
+          <ScalarProperty Name="idEntry" ColumnName="idEntry" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idProperty" ColumnName="idProperty" />
+          <ScalarProperty Name="property" ColumnName="property" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspWAEntryDetailSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspWAEntryDetailSearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspWAEntryDetailSearch_Result">
+          <ScalarProperty Name="idEntry" ColumnName="idEntry" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="purchasePrice" ColumnName="purchasePrice" />
+          <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspWAEntryInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspWAEntryInsert" />
+    <FunctionImportMapping FunctionImportName="uspWAEntrySearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspWAEntrySearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspWAEntrySearch_Result">
+          <ScalarProperty Name="idEntry" ColumnName="idEntry" />
+          <ScalarProperty Name="idSource" ColumnName="idSource" />
+          <ScalarProperty Name="entryType" ColumnName="entryType" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspWAEntryUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspWAEntryUpdate" />
+    <FunctionImportMapping FunctionImportName="uspWAProductStockAuditInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspWAProductStockAuditInsert" />
+    <FunctionImportMapping FunctionImportName="uspWAProductStockInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspWAProductStockInsert" />
+    <FunctionImportMapping FunctionImportName="uspWAProductStockUpdate" FunctionName="DB_9CBF45_erpStoreModel.Store.uspWAProductStockUpdate" />
+  </EntityContainerMapping>
+</Mapping>

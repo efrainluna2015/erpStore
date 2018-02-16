@@ -31,6 +31,22 @@ namespace DataAccess
             }
         }
 
+        public ENResult searchCategory(int idCategory )
+        {
+            try
+            {
+                using (erpStoreEntities db = new erpStoreEntities())
+                {
+                    List<uspGEProductCategorySearch_Result> result = db.uspGEProductCategorySearch(idCategory, PUser, PReturnCode, PReturnMessage).ToList();
+                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value), result);
+                }
+            }
+            catch (Exception ex)
+            {
+                return PUnexpectedError(ex);
+            }
+        }
+
         public ENResult insert(uspGEProductSearch_Result data, IList<ENProductProperty> listProperty)
         {
             try
@@ -43,13 +59,16 @@ namespace DataAccess
                         PUser, objIdProduct, PReturnCode, PReturnMessage);
                     if (Convert.ToInt32(PReturnCode.Value) == 0)
                     {
-                        for(int i = 0; i < listProperty.Count; i++)
+                        if (listProperty != null)
                         {
-                            ENProductProperty temp = listProperty[i];
-                            db.uspGEProductPropertyInsert(Convert.ToInt32(objIdProduct.Value), temp.name, temp.abbreviation, temp.required, PUser, PReturnCode, PReturnMessage);
-                            if (Convert.ToInt32(PReturnCode.Value) != 0)
+                            for (int i = 0; i < listProperty.Count; i++)
                             {
-                                break;
+                                ENProductProperty temp = listProperty[i];
+                                db.uspGEProductPropertyInsert(Convert.ToInt32(objIdProduct.Value), temp.name, temp.abbreviation, temp.required, PUser, PReturnCode, PReturnMessage);
+                                if (Convert.ToInt32(PReturnCode.Value) != 0)
+                                {
+                                    break;
+                                }
                             }
                         }
                         return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));   
@@ -66,7 +85,7 @@ namespace DataAccess
             }
         }
 
-        public ENResult update(uspGEProductSearch_Result data)
+        public ENResult update(uspGEProductSearch_Result data, IList<ENProductProperty> listProperty, IList<ENProductProperty> listPropertyDelete)
         {
             try
             {
@@ -75,7 +94,46 @@ namespace DataAccess
                     db.uspGEProductUpdate(data.idProduct, data.idCategory, data.idBrand, data.codeUnit, data.name, data.divisible,
                         data.divisibleCodeUnit, data.divisibleNumberParts, data.perishable, data.traceable, data.barcodeType,
                         PUser, PReturnCode, PReturnMessage);
-                    return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
+                    if (Convert.ToInt32(PReturnCode.Value) == 0)
+                    {
+                        if (listProperty != null)
+                        {
+                            for (int i = 0; i < listProperty.Count; i++)
+                            {
+                                ENProductProperty temp = listProperty[i];
+                                if (temp.idProperty == 0)
+                                {
+                                    db.uspGEProductPropertyInsert(data.idProduct, temp.name, temp.abbreviation, temp.required, PUser, PReturnCode, PReturnMessage);
+                                }
+                                else
+                                {
+                                    db.uspGEProductPropertyUpdate(temp.idProperty, data.idProduct, temp.name, temp.abbreviation, temp.required, PUser, PReturnCode, PReturnMessage);
+                                }
+                                if (Convert.ToInt32(PReturnCode.Value) != 0)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        if (listPropertyDelete != null)
+                        {
+                            for (int i = 0; i < listPropertyDelete.Count; i++)
+                            {
+                                ENProductProperty temp = listPropertyDelete[i];
+                                db.uspGEProductPropertyDelete(data.idProduct, temp.idProperty, PUser, PReturnCode, PReturnMessage);
+
+                                if (Convert.ToInt32(PReturnCode.Value) != 0)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
+                    }
+                    else
+                    {
+                        return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
+                    }
                 }
             }
             catch (Exception ex)

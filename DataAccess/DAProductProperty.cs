@@ -14,13 +14,13 @@ namespace DataAccess
 
         }
 
-        public ENResult search()
+        public ENResult search(int idProduct)
         {
             try
             {
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
-                    List<uspGEProductPropertySearch_Result> result = db.uspGEProductPropertySearch(PUser, PReturnCode, PReturnMessage).ToList();
+                    List<uspGEProductPropertySearch_Result> result = db.uspGEProductPropertySearch(idProduct, PUser, PReturnCode, PReturnMessage).ToList();
                     return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value), result);
                 }
             }

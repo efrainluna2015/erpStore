@@ -391,6 +391,30 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGEProductCategorySearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductCategorySearch">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEProductCategorySearch_Result">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+          <ScalarProperty Name="idBrand" ColumnName="idBrand" />
+          <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="divisible" ColumnName="divisible" />
+          <ScalarProperty Name="divisibleCodeUnit" ColumnName="divisibleCodeUnit" />
+          <ScalarProperty Name="divisibleNumberParts" ColumnName="divisibleNumberParts" />
+          <ScalarProperty Name="perishable" ColumnName="perishable" />
+          <ScalarProperty Name="traceable" ColumnName="traceable" />
+          <ScalarProperty Name="barcodeType" ColumnName="barcodeType" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="uspGEProductDelete" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductDelete" />
     <FunctionImportMapping FunctionImportName="uspGEProductInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductInsert" />
     <FunctionImportMapping FunctionImportName="uspGEProductPriceAuditInsert" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductPriceAuditInsert" />
@@ -448,6 +472,8 @@
           <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
           <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
           <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

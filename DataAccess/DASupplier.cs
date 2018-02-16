@@ -54,7 +54,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspPUSupplierUpdate(data.idSupplier, data.name, data.documentType, data.documentNumber, data.address,
-                            data.phoneNumber, data.email, data.userCreated, data.userUpdated, PReturnCode, PReturnMessage);
+                            data.phoneNumber, data.email, data.contactPerson, PUser, PReturnCode, PReturnMessage);
                     return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }

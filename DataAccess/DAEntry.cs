@@ -38,7 +38,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     ObjectParameter objIdEntry = new ObjectParameter("idEntry", 0);
-                    db.uspWAEntryInsert(data.idSource,data.entryType,data.date, data.userCreated, objIdEntry, PReturnCode, PReturnMessage);
+                    db.uspWAEntryInsert(data.idSource,data.entryType,data.date, PUser, objIdEntry, PReturnCode, PReturnMessage);
                     if (Convert.ToInt32(PReturnCode.Value) == 0){
                         int codeTemp = 0;
                         string messageTemp = "";
@@ -59,7 +59,6 @@ namespace DataAccess
                             }
                         }                        
                         return new ENResult(codeTemp, messageTemp);
-
                     }
                     else
                     {
@@ -79,7 +78,7 @@ namespace DataAccess
             {
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
-                    db.uspWAEntryUpdate(data.idEntry, data.idSource, data.entryType, data.date, data.userUpdated, PReturnCode, PReturnMessage);
+                    db.uspWAEntryUpdate(data.idEntry, data.idSource, data.entryType, data.date, PUser, PReturnCode, PReturnMessage);
                     return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
@@ -106,4 +105,3 @@ namespace DataAccess
         }
     }
 }
-

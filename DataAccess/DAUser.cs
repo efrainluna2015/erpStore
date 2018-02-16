@@ -111,6 +111,7 @@ namespace DataAccess
                         user.lastname = result[0].lastname;
                         user.profileName = result[0].profileName;
                         user.storeName = result[0].storeName;
+                        user.actions = new List<ENUserAction>();
                         List<uspSEUserProfileActionSearch_Result> actions =  db.uspSEUserProfileActionSearch(userName, PUser, PReturnCode, PReturnMessage).ToList();
 
                         for (int i =0; i< actions.Count; i++)

@@ -29,5 +29,7 @@ namespace DataAccess
         public System.DateTime dateCreated { get; set; }
         public string userUpdated { get; set; }
         public Nullable<System.DateTime> dateUpdated { get; set; }
+        public string category { get; set; }
+        public string brand { get; set; }
     }
 }

@@ -156,6 +156,9 @@
     <Compile Include="uspGEProductBarcodeSearch_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="uspGEProductCategorySearch_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="uspGEProductPriceSearch_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

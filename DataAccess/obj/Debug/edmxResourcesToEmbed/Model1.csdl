@@ -429,6 +429,12 @@
       <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
       <Parameter Name="returnMessage" Mode="InOut" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="uspGEProductCategorySearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEProductCategorySearch_Result)">
+      <Parameter Name="idCategory" Mode="In" Type="Int32" />
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="uspGEProductDelete">
       <Parameter Name="idProduct" Mode="In" Type="Int32" />
       <Parameter Name="user" Mode="In" Type="String" />
@@ -515,6 +521,7 @@
       <Parameter Name="returnMessage" Mode="InOut" Type="String" />
     </FunctionImport>
     <FunctionImport Name="uspGEProductPropertySearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEProductPropertySearch_Result)">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
       <Parameter Name="user" Mode="In" Type="String" />
       <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
       <Parameter Name="returnMessage" Mode="InOut" Type="String" />
@@ -1013,6 +1020,26 @@
     <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
     <Property Type="String" Name="barcode" Nullable="false" MaxLength="50" />
   </ComplexType>
+  <ComplexType Name="uspGEProductCategorySearch_Result">
+    <Property Type="Int32" Name="idProduct" Nullable="false" />
+    <Property Type="Int32" Name="idCategory" Nullable="false" />
+    <Property Type="Int32" Name="idBrand" Nullable="false" />
+    <Property Type="String" Name="codeUnit" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="divisible" Nullable="false" />
+    <Property Type="String" Name="divisibleCodeUnit" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="divisibleNumberParts" Nullable="true" />
+    <Property Type="Boolean" Name="perishable" Nullable="false" />
+    <Property Type="Boolean" Name="traceable" Nullable="false" />
+    <Property Type="String" Name="barcodeType" Nullable="false" MaxLength="20" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="category" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="brand" Nullable="false" MaxLength="100" />
+  </ComplexType>
   <ComplexType Name="uspGEProductPriceSearch_Result">
     <Property Type="Int32" Name="idProduct" Nullable="false" />
     <Property Type="Decimal" Name="purchasePrice" Nullable="false" Precision="10" Scale="2" />
@@ -1051,6 +1078,8 @@
     <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
     <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
     <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="category" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="brand" Nullable="false" MaxLength="100" />
   </ComplexType>
   <ComplexType Name="uspGEStoreSearch_Result">
     <Property Type="Int32" Name="idStore" Nullable="false" />

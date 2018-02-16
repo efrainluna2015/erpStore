@@ -247,6 +247,19 @@ namespace DataAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGEProductBarcodeSearch_Result>("uspGEProductBarcodeSearch", userParameter, returnCode, returnMessage);
         }
     
+        public virtual ObjectResult<uspGEProductCategorySearch_Result> uspGEProductCategorySearch(Nullable<int> idCategory, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        {
+            var idCategoryParameter = idCategory.HasValue ?
+                new ObjectParameter("idCategory", idCategory) :
+                new ObjectParameter("idCategory", typeof(int));
+    
+            var userParameter = user != null ?
+                new ObjectParameter("user", user) :
+                new ObjectParameter("user", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGEProductCategorySearch_Result>("uspGEProductCategorySearch", idCategoryParameter, userParameter, returnCode, returnMessage);
+        }
+    
         public virtual int uspGEProductDelete(Nullable<int> idProduct, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
         {
             var idProductParameter = idProduct.HasValue ?
@@ -484,13 +497,17 @@ namespace DataAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspGEProductPropertyInsert", idProductParameter, nameParameter, abbreviationParameter, requiredParameter, userParameter, returnCode, returnMessage);
         }
     
-        public virtual ObjectResult<uspGEProductPropertySearch_Result> uspGEProductPropertySearch(string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        public virtual ObjectResult<uspGEProductPropertySearch_Result> uspGEProductPropertySearch(Nullable<int> idProduct, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
         {
+            var idProductParameter = idProduct.HasValue ?
+                new ObjectParameter("idProduct", idProduct) :
+                new ObjectParameter("idProduct", typeof(int));
+    
             var userParameter = user != null ?
                 new ObjectParameter("user", user) :
                 new ObjectParameter("user", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGEProductPropertySearch_Result>("uspGEProductPropertySearch", userParameter, returnCode, returnMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGEProductPropertySearch_Result>("uspGEProductPropertySearch", idProductParameter, userParameter, returnCode, returnMessage);
         }
     
         public virtual int uspGEProductPropertyUpdate(Nullable<int> idProductProperty, Nullable<int> idProduct, string name, string abbreviation, Nullable<bool> required, string user, ObjectParameter returnCode, ObjectParameter returnMessage)

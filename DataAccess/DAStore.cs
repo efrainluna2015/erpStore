@@ -36,7 +36,7 @@ namespace DataAccess
             {
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
-                    db.uspGEStoreInsert(data.name, data.address, data.processSale, data.userCreated, PReturnCode, PReturnMessage);
+                    db.uspGEStoreInsert(data.name, data.address, data.processSale, PUser, PReturnCode, PReturnMessage);
                     return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
@@ -52,7 +52,7 @@ namespace DataAccess
             {
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
-                    db.uspGEStoreUpdate(data.idStore, data.name,data.address,data.processSale, data.userUpdated, PReturnCode, PReturnMessage);
+                    db.uspGEStoreUpdate(data.idStore, data.name,data.address,data.processSale, PUser, PReturnCode, PReturnMessage);
                     return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }

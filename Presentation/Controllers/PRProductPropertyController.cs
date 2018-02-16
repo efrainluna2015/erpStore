@@ -12,14 +12,14 @@ namespace Presentation.Controllers
     {
 
         [HttpPost]
-        public JsonResult search()
+        public JsonResult search(int idProduct)
         {
             try
             {
                 if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     DAProductProperty property = new DAProductProperty(PUser);
-                    ENResult result = property.search();
+                    ENResult result = property.search(idProduct);
                     result.token = PCreateToken();
                     return Json(result);
                 }

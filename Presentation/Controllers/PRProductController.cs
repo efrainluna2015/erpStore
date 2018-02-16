@@ -35,6 +35,30 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
+        public JsonResult searchCategory(int idCategory)
+        {
+            try
+            {
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
+                {
+                    DAProduct product = new DAProduct(PUser);
+                    ENResult result = product.searchCategory(idCategory);
+                    result.token = PCreateToken();
+                    return Json(result);
+                }
+                else
+                {
+                    return PSecurityError();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return PUnexpectedError(ex);
+            }
+        }
+
+        [HttpPost]
         public JsonResult insert(int idCategory, int idBrand, string codeUnit, string name, bool divisible,
                         string divisibleCodeUnit, int divisibleNumberParts, bool perishable, bool traceable, 
                         string barcodeType, IList<ENProductProperty> listProperty)
@@ -87,7 +111,7 @@ namespace Presentation.Controllers
         [HttpPost]
         public JsonResult update(int id, int idCategory, int idBrand, string codeUnit, string name, bool divisible,
                         string divisibleCodeUnit, int divisibleNumberParts, bool perishable, bool traceable,
-                        string barcodeType)
+                        string barcodeType, IList<ENProductProperty> listProperty, IList<ENProductProperty> listPropertyDelete)
         {
             try
             {
@@ -106,7 +130,7 @@ namespace Presentation.Controllers
                     data.traceable = traceable;
                     data.barcodeType = barcodeType;
                     DAProduct product = new DAProduct(PUser);
-                    ENResult result = product.update(data);
+                    ENResult result = product.update(data, listProperty, listPropertyDelete);
                     result.token = PCreateToken();
                     return Json(result);
                 }

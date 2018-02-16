@@ -406,6 +406,12 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
     <Parameter Name="returnCode" Type="int" Mode="InOut" />
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
   </Function>
+  <Function Name="uspGEProductCategorySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idCategory" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
   <Function Name="uspGEProductDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idProduct" Type="int" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
@@ -492,6 +498,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
   </Function>
   <Function Name="uspGEProductPropertySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
     <Parameter Name="returnCode" Type="int" Mode="InOut" />
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />

@@ -1,0 +1,5 @@
+C:\Users\Betzabe\source\repos\BEErpStore\Entity\bin\Release\Entity.dll
+C:\Users\Betzabe\source\repos\BEErpStore\Entity\bin\Release\Entity.pdb
+C:\Users\Betzabe\source\repos\BEErpStore\Entity\obj\Release\Entity.csproj.CoreCompileInputs.cache
+C:\Users\Betzabe\source\repos\BEErpStore\Entity\obj\Release\Entity.dll
+C:\Users\Betzabe\source\repos\BEErpStore\Entity\obj\Release\Entity.pdb
