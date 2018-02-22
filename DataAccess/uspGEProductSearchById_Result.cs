@@ -10,19 +10,26 @@
 namespace DataAccess
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class WAEntry
+    public partial class uspGEProductSearchById_Result
     {
-        public int idEntry { get; set; }
-        public Nullable<int> idStore { get; set; }
-        public Nullable<int> idSupplier { get; set; }
-        public string entryType { get; set; }
-        public System.DateTime date { get; set; }
+        public int idProduct { get; set; }
+        public int idCategory { get; set; }
+        public int idBrand { get; set; }
+        public string codeUnit { get; set; }
+        public string name { get; set; }
+        public bool divisible { get; set; }
+        public string divisibleCodeUnit { get; set; }
+        public Nullable<int> divisibleNumberParts { get; set; }
+        public bool perishable { get; set; }
+        public bool traceable { get; set; }
+        public string barcodeType { get; set; }
         public bool active { get; set; }
         public string userCreated { get; set; }
         public System.DateTime dateCreated { get; set; }
         public string userUpdated { get; set; }
         public Nullable<System.DateTime> dateUpdated { get; set; }
+        public string category { get; set; }
+        public string brand { get; set; }
     }
 }

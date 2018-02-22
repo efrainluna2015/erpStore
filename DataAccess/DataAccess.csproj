@@ -165,6 +165,9 @@
     <Compile Include="uspGEProductPropertySearch_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="uspGEProductSearchById_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="uspGEProductSearch_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

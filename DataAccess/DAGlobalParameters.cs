@@ -38,7 +38,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspGEGlobalParametersUpdate(data.IGV, data.percentageMinWholesalePrice,data.percentageMinRetailPrice,
-                        data.userUpdated, PReturnCode, PReturnMessage);
+                        PUser, PReturnCode, PReturnMessage);
                     return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }

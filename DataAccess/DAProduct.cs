@@ -31,7 +31,30 @@ namespace DataAccess
             }
         }
 
-        public ENResult searchCategory(int idCategory )
+        public ENResult searchProductById(int idProduct)
+        {
+            try
+            {
+                using (erpStoreEntities db = new erpStoreEntities())
+                {
+                    List<uspGEProductSearchById_Result> result = db.uspGEProductSearchById(idProduct, PUser, PReturnCode, PReturnMessage).ToList();
+                    if (result.Count == 1)
+                    {
+                        return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value), result[0]);
+                    }
+                    else
+                    {
+                        return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value), null);
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                return PUnexpectedError(ex);
+            }
+        }
+        public ENResult searchCategory(int idCategory)
         {
             try
             {

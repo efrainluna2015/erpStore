@@ -39,7 +39,7 @@ namespace DataAccess
                 {
                     ObjectParameter objIdSale = new ObjectParameter("idSale", 0);
                     db.uspSASaleInsert(data.documentType, data.documentNumber,data.date,data.ticket,
-                                       data.status,data.userCreated, objIdSale,PReturnCode, PReturnMessage);
+                                       data.status, PUser, objIdSale,PReturnCode, PReturnMessage);
                     if (Convert.ToInt32(PReturnCode.Value) == 0)
                     {
                         int codeTemp = 0;
@@ -75,7 +75,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspSASaleUpdate(data.idSale, data.documentType, data.documentNumber, data.date, 
-                                       data.status, data.userUpdated, PReturnCode, PReturnMessage);
+                                       data.status, PUser, PReturnCode, PReturnMessage);
                     return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }

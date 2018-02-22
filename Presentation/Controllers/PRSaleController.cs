@@ -35,7 +35,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public JsonResult insert(string documentType, string documentNumber, DateTime date, string status,Array detail)
+        public JsonResult insert(string documentType, string documentNumber, DateTime date,int ticket, string status,Array detail)
         {
             try
             {
@@ -45,6 +45,7 @@ namespace Presentation.Controllers
                     data.documentType = documentType;
                     data.documentNumber = documentNumber;
                     data.date = date;
+                    data.ticket = ticket;
                     data.status = status;
                     List<uspSASaleDetailSearch_Result> saleDetail = new List<uspSASaleDetailSearch_Result>();
                     for (int i = 0; i < detail.Length; i++)

@@ -35,19 +35,66 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public JsonResult insert(int idSource, string entryType, DateTime date, Array detail)
+        public JsonResult searchDetail(int idEntry)
+        {
+            try
+            {
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
+                {
+                    DAEntry entry = new DAEntry(PUser);
+                    ENResult result = entry.searchDetail(idEntry);
+                    result.token = PCreateToken();
+                    return Json(result);
+                }
+                else
+                {
+                    return PSecurityError();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return PUnexpectedError(ex);
+            }
+        }
+
+        [HttpPost]
+        public JsonResult searchDetailProperty(int idEntry)
+        {
+            try
+            {
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
+                {
+                    DAEntry entry = new DAEntry(PUser);
+                    ENResult result = entry.searchDetailProperty(idEntry);
+                    result.token = PCreateToken();
+                    return Json(result);
+                }
+                else
+                {
+                    return PSecurityError();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return PUnexpectedError(ex);
+            }
+        }
+        [HttpPost]
+        public JsonResult insert(int idStore, int idSupplier, string entryType, DateTime date, IList<ENEntryDetail> listDetail)        
         {
             try
             {
                 if (PValidateHeader(Request.Headers["Authorization"].ToString()))
                 {
                     uspWAEntrySearch_Result data = new uspWAEntrySearch_Result();
-                    data.idSource = idSource;
+                    data.idStore = idStore;
+                    data.idSupplier = idSupplier;
                     data.entryType = entryType;
-                    List<uspWAEntryDetailSearch_Result> entryDetail = new List<uspWAEntryDetailSearch_Result>();
-                    List<uspWAEntryDetailPropertySearch_Result> entryDetailProperty = new List<uspWAEntryDetailPropertySearch_Result>();
+                    data.date = date;
                     DAEntry entry = new DAEntry(PUser);
-                    ENResult result = entry.insert(data, entryDetail, entryDetailProperty);
+                    ENResult result = entry.insert(data, listDetail);
                     result.token = PCreateToken();
                     return Json(result);
                 }
@@ -63,7 +110,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public JsonResult update(int id, int idSource, string entryType, DateTime date)
+        public JsonResult update(int id, int idStore, int idSupplier, string entryType, DateTime date)
         {
             try
             {
@@ -71,7 +118,8 @@ namespace Presentation.Controllers
                 {
                     uspWAEntrySearch_Result data = new uspWAEntrySearch_Result();
                     data.idEntry = id;
-                    data.idSource = idSource;
+                    data.idStore = idStore;
+                    data.idSupplier = idSupplier;
                     data.entryType = entryType;
                     data.date = date;
                     DAEntry entry = new DAEntry(PUser);

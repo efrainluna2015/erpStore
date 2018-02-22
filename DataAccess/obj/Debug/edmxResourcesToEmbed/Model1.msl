@@ -270,7 +270,8 @@
       <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.WAEntry">
         <MappingFragment StoreEntitySet="WAEntry">
           <ScalarProperty Name="idEntry" ColumnName="idEntry" />
-          <ScalarProperty Name="idSource" ColumnName="idSource" />
+          <ScalarProperty Name="idStore" ColumnName="idStore" />
+          <ScalarProperty Name="idSupplier" ColumnName="idSupplier" />
           <ScalarProperty Name="entryType" ColumnName="entryType" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="active" ColumnName="active" />
@@ -456,6 +457,30 @@
     <FunctionImportMapping FunctionImportName="uspGEProductSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductSearch">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEProductSearch_Result">
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+          <ScalarProperty Name="idBrand" ColumnName="idBrand" />
+          <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="divisible" ColumnName="divisible" />
+          <ScalarProperty Name="divisibleCodeUnit" ColumnName="divisibleCodeUnit" />
+          <ScalarProperty Name="divisibleNumberParts" ColumnName="divisibleNumberParts" />
+          <ScalarProperty Name="perishable" ColumnName="perishable" />
+          <ScalarProperty Name="traceable" ColumnName="traceable" />
+          <ScalarProperty Name="barcodeType" ColumnName="barcodeType" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="brand" ColumnName="brand" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGEProductSearchById" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductSearchById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEProductSearchById_Result">
           <ScalarProperty Name="idProduct" ColumnName="idProduct" />
           <ScalarProperty Name="idCategory" ColumnName="idCategory" />
           <ScalarProperty Name="idBrand" ColumnName="idBrand" />
@@ -711,7 +736,21 @@
         <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspWAEntryDetailSearch_Result">
           <ScalarProperty Name="idEntry" ColumnName="idEntry" />
           <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+          <ScalarProperty Name="idBrand" ColumnName="idBrand" />
+          <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="divisible" ColumnName="divisible" />
+          <ScalarProperty Name="divisibleCodeUnit" ColumnName="divisibleCodeUnit" />
+          <ScalarProperty Name="divisibleNumberParts" ColumnName="divisibleNumberParts" />
+          <ScalarProperty Name="perishable" ColumnName="perishable" />
+          <ScalarProperty Name="traceable" ColumnName="traceable" />
+          <ScalarProperty Name="barcodeType" ColumnName="barcodeType" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+          <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="purchasePrice" ColumnName="purchasePrice" />
           <ScalarProperty Name="dueDate" ColumnName="dueDate" />
@@ -723,7 +762,8 @@
       <ResultMapping>
         <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspWAEntrySearch_Result">
           <ScalarProperty Name="idEntry" ColumnName="idEntry" />
-          <ScalarProperty Name="idSource" ColumnName="idSource" />
+          <ScalarProperty Name="idStore" ColumnName="idStore" />
+          <ScalarProperty Name="idSupplier" ColumnName="idSupplier" />
           <ScalarProperty Name="entryType" ColumnName="entryType" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="active" ColumnName="active" />
@@ -731,6 +771,8 @@
           <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
           <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
           <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+          <ScalarProperty Name="store" ColumnName="store" />
+          <ScalarProperty Name="supplier" ColumnName="supplier" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

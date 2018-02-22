@@ -273,7 +273,8 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
             <PropertyRef Name="idEntry" />
           </Key>
           <Property Name="idEntry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idSource" Type="int" Nullable="false" />
+          <Property Name="idStore" Type="int" />
+          <Property Name="idSupplier" Type="int" />
           <Property Name="entryType" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="date" Type="datetime" Nullable="false" />
           <Property Name="active" Type="bit" Nullable="false" />
@@ -519,6 +520,12 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
         </Function>
         <Function Name="uspGEProductSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user" Type="varchar" Mode="In" />
+          <Parameter Name="returnCode" Type="int" Mode="InOut" />
+          <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="uspGEProductSearchById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProduct" Type="int" Mode="In" />
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="returnCode" Type="int" Mode="InOut" />
           <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
@@ -889,7 +896,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           <Parameter Name="idProduct" Type="int" Mode="In" />
           <Parameter Name="quantity" Type="int" Mode="In" />
           <Parameter Name="purchasePrice" Type="decimal" Mode="In" />
-          <Parameter Name="dueDate" Type="datetime" Mode="In" />
+          <Parameter Name="dueDate" Type="varchar" Mode="In" />
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="returnCode" Type="int" Mode="InOut" />
           <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
@@ -912,17 +919,20 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
         </Function>
         <Function Name="uspWAEntryDetailPropertySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idEntry" Type="int" Mode="In" />
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="returnCode" Type="int" Mode="InOut" />
           <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
         </Function>
         <Function Name="uspWAEntryDetailSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idEntry" Type="int" Mode="In" />
           <Parameter Name="user" Type="varchar" Mode="In" />
           <Parameter Name="returnCode" Type="int" Mode="InOut" />
           <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
         </Function>
         <Function Name="uspWAEntryInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="idSource" Type="int" Mode="In" />
+          <Parameter Name="idStore" Type="int" Mode="In" />
+          <Parameter Name="idSupplier" Type="int" Mode="In" />
           <Parameter Name="entryType" Type="varchar" Mode="In" />
           <Parameter Name="date" Type="datetime" Mode="In" />
           <Parameter Name="user" Type="varchar" Mode="In" />
@@ -937,7 +947,8 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
         </Function>
         <Function Name="uspWAEntryUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idEntry" Type="int" Mode="In" />
-          <Parameter Name="idSource" Type="int" Mode="In" />
+          <Parameter Name="idStore" Type="int" Mode="In" />
+          <Parameter Name="idSupplier" Type="int" Mode="In" />
           <Parameter Name="entryType" Type="varchar" Mode="In" />
           <Parameter Name="date" Type="datetime" Mode="In" />
           <Parameter Name="user" Type="varchar" Mode="In" />
@@ -1265,7 +1276,8 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
             <PropertyRef Name="idEntry" />
           </Key>
           <Property Name="idEntry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idSource" Type="Int32" Nullable="false" />
+          <Property Name="idStore" Type="Int32" />
+          <Property Name="idSupplier" Type="Int32" />
           <Property Name="entryType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="active" Type="Boolean" Nullable="false" />
@@ -1548,6 +1560,12 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
             <Parameter Name="returnMessage" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="uspGEProductSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEProductSearch_Result)">
+            <Parameter Name="user" Mode="In" Type="String" />
+            <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+            <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="uspGEProductSearchById" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEProductSearchById_Result)">
+            <Parameter Name="idProduct" Mode="In" Type="Int32" />
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
             <Parameter Name="returnMessage" Mode="InOut" Type="String" />
@@ -1918,7 +1936,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
             <Parameter Name="idProduct" Mode="In" Type="Int32" />
             <Parameter Name="quantity" Mode="In" Type="Int32" />
             <Parameter Name="purchasePrice" Mode="In" Type="Decimal" />
-            <Parameter Name="dueDate" Mode="In" Type="DateTime" />
+            <Parameter Name="dueDate" Mode="In" Type="String" />
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
             <Parameter Name="returnMessage" Mode="InOut" Type="String" />
@@ -1941,17 +1959,20 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
             <Parameter Name="returnMessage" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="uspWAEntryDetailPropertySearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspWAEntryDetailPropertySearch_Result)">
+            <Parameter Name="idEntry" Mode="In" Type="Int32" />
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
             <Parameter Name="returnMessage" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="uspWAEntryDetailSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspWAEntryDetailSearch_Result)">
+            <Parameter Name="idEntry" Mode="In" Type="Int32" />
             <Parameter Name="user" Mode="In" Type="String" />
             <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
             <Parameter Name="returnMessage" Mode="InOut" Type="String" />
           </FunctionImport>
           <FunctionImport Name="uspWAEntryInsert">
-            <Parameter Name="idSource" Mode="In" Type="Int32" />
+            <Parameter Name="idStore" Mode="In" Type="Int32" />
+            <Parameter Name="idSupplier" Mode="In" Type="Int32" />
             <Parameter Name="entryType" Mode="In" Type="String" />
             <Parameter Name="date" Mode="In" Type="DateTime" />
             <Parameter Name="user" Mode="In" Type="String" />
@@ -1966,7 +1987,8 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           </FunctionImport>
           <FunctionImport Name="uspWAEntryUpdate">
             <Parameter Name="idEntry" Mode="In" Type="Int32" />
-            <Parameter Name="idSource" Mode="In" Type="Int32" />
+            <Parameter Name="idStore" Mode="In" Type="Int32" />
+            <Parameter Name="idSupplier" Mode="In" Type="Int32" />
             <Parameter Name="entryType" Mode="In" Type="String" />
             <Parameter Name="date" Mode="In" Type="DateTime" />
             <Parameter Name="user" Mode="In" Type="String" />
@@ -2073,6 +2095,26 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           <Property Type="Boolean" Name="required" Nullable="false" />
         </ComplexType>
         <ComplexType Name="uspGEProductSearch_Result">
+          <Property Type="Int32" Name="idProduct" Nullable="false" />
+          <Property Type="Int32" Name="idCategory" Nullable="false" />
+          <Property Type="Int32" Name="idBrand" Nullable="false" />
+          <Property Type="String" Name="codeUnit" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="divisible" Nullable="false" />
+          <Property Type="String" Name="divisibleCodeUnit" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="divisibleNumberParts" Nullable="true" />
+          <Property Type="Boolean" Name="perishable" Nullable="false" />
+          <Property Type="Boolean" Name="traceable" Nullable="false" />
+          <Property Type="String" Name="barcodeType" Nullable="false" MaxLength="20" />
+          <Property Type="Boolean" Name="active" Nullable="false" />
+          <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+          <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+          <Property Type="String" Name="category" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="brand" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="uspGEProductSearchById_Result">
           <Property Type="Int32" Name="idProduct" Nullable="false" />
           <Property Type="Int32" Name="idCategory" Nullable="false" />
           <Property Type="Int32" Name="idBrand" Nullable="false" />
@@ -2224,20 +2266,35 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           <Property Type="Int32" Name="idEntry" Nullable="false" />
           <Property Type="Int32" Name="idProduct" Nullable="false" />
           <Property Type="Int32" Name="idProperty" Nullable="false" />
-          <Property Type="String" Name="property" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="property" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="value" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="uspWAEntryDetailSearch_Result">
           <Property Type="Int32" Name="idEntry" Nullable="false" />
-          <Property Type="Int32" Name="idProduct" Nullable="false" />
-          <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="idProduct" Nullable="true" />
+          <Property Type="Int32" Name="idCategory" Nullable="true" />
+          <Property Type="Int32" Name="idBrand" Nullable="true" />
+          <Property Type="String" Name="codeUnit" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+          <Property Type="Boolean" Name="divisible" Nullable="true" />
+          <Property Type="String" Name="divisibleCodeUnit" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="divisibleNumberParts" Nullable="true" />
+          <Property Type="Boolean" Name="perishable" Nullable="true" />
+          <Property Type="Boolean" Name="traceable" Nullable="true" />
+          <Property Type="String" Name="barcodeType" Nullable="true" MaxLength="20" />
+          <Property Type="Boolean" Name="active" Nullable="true" />
+          <Property Type="String" Name="userCreated" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dateCreated" Nullable="true" Precision="23" />
+          <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
           <Property Type="Int32" Name="quantity" Nullable="false" />
           <Property Type="Decimal" Name="purchasePrice" Nullable="false" Precision="10" Scale="2" />
           <Property Type="DateTime" Name="dueDate" Nullable="true" Precision="23" />
         </ComplexType>
         <ComplexType Name="uspWAEntrySearch_Result">
           <Property Type="Int32" Name="idEntry" Nullable="false" />
-          <Property Type="Int32" Name="idSource" Nullable="false" />
+          <Property Type="Int32" Name="idStore" Nullable="true" />
+          <Property Type="Int32" Name="idSupplier" Nullable="true" />
           <Property Type="String" Name="entryType" Nullable="false" MaxLength="20" />
           <Property Type="DateTime" Name="date" Nullable="false" Precision="23" />
           <Property Type="Boolean" Name="active" Nullable="false" />
@@ -2245,6 +2302,8 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
           <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
           <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+          <Property Type="String" Name="store" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="supplier" Nullable="true" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2521,7 +2580,8 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
             <EntityTypeMapping TypeName="DB_9CBF45_erpStoreModel.WAEntry">
               <MappingFragment StoreEntitySet="WAEntry">
                 <ScalarProperty Name="idEntry" ColumnName="idEntry" />
-                <ScalarProperty Name="idSource" ColumnName="idSource" />
+                <ScalarProperty Name="idStore" ColumnName="idStore" />
+                <ScalarProperty Name="idSupplier" ColumnName="idSupplier" />
                 <ScalarProperty Name="entryType" ColumnName="entryType" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="active" ColumnName="active" />
@@ -2707,6 +2767,30 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
           <FunctionImportMapping FunctionImportName="uspGEProductSearch" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEProductSearch_Result">
+                <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+                <ScalarProperty Name="idBrand" ColumnName="idBrand" />
+                <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="divisible" ColumnName="divisible" />
+                <ScalarProperty Name="divisibleCodeUnit" ColumnName="divisibleCodeUnit" />
+                <ScalarProperty Name="divisibleNumberParts" ColumnName="divisibleNumberParts" />
+                <ScalarProperty Name="perishable" ColumnName="perishable" />
+                <ScalarProperty Name="traceable" ColumnName="traceable" />
+                <ScalarProperty Name="barcodeType" ColumnName="barcodeType" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+                <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="uspGEProductSearchById" FunctionName="DB_9CBF45_erpStoreModel.Store.uspGEProductSearchById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspGEProductSearchById_Result">
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
                 <ScalarProperty Name="idCategory" ColumnName="idCategory" />
                 <ScalarProperty Name="idBrand" ColumnName="idBrand" />
@@ -2962,7 +3046,21 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
               <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspWAEntryDetailSearch_Result">
                 <ScalarProperty Name="idEntry" ColumnName="idEntry" />
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+                <ScalarProperty Name="idCategory" ColumnName="idCategory" />
+                <ScalarProperty Name="idBrand" ColumnName="idBrand" />
+                <ScalarProperty Name="codeUnit" ColumnName="codeUnit" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="divisible" ColumnName="divisible" />
+                <ScalarProperty Name="divisibleCodeUnit" ColumnName="divisibleCodeUnit" />
+                <ScalarProperty Name="divisibleNumberParts" ColumnName="divisibleNumberParts" />
+                <ScalarProperty Name="perishable" ColumnName="perishable" />
+                <ScalarProperty Name="traceable" ColumnName="traceable" />
+                <ScalarProperty Name="barcodeType" ColumnName="barcodeType" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="userCreated" ColumnName="userCreated" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+                <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
+                <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
                 <ScalarProperty Name="purchasePrice" ColumnName="purchasePrice" />
                 <ScalarProperty Name="dueDate" ColumnName="dueDate" />
@@ -2974,7 +3072,8 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
             <ResultMapping>
               <ComplexTypeMapping TypeName="DB_9CBF45_erpStoreModel.uspWAEntrySearch_Result">
                 <ScalarProperty Name="idEntry" ColumnName="idEntry" />
-                <ScalarProperty Name="idSource" ColumnName="idSource" />
+                <ScalarProperty Name="idStore" ColumnName="idStore" />
+                <ScalarProperty Name="idSupplier" ColumnName="idSupplier" />
                 <ScalarProperty Name="entryType" ColumnName="entryType" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="active" ColumnName="active" />
@@ -2982,6 +3081,8 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
                 <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
                 <ScalarProperty Name="userUpdated" ColumnName="userUpdated" />
                 <ScalarProperty Name="dateUpdated" ColumnName="dateUpdated" />
+                <ScalarProperty Name="store" ColumnName="store" />
+                <ScalarProperty Name="supplier" ColumnName="supplier" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

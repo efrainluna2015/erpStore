@@ -14,7 +14,8 @@ namespace DataAccess
     public partial class uspWAEntrySearch_Result
     {
         public int idEntry { get; set; }
-        public int idSource { get; set; }
+        public Nullable<int> idStore { get; set; }
+        public Nullable<int> idSupplier { get; set; }
         public string entryType { get; set; }
         public System.DateTime date { get; set; }
         public bool active { get; set; }
@@ -22,5 +23,7 @@ namespace DataAccess
         public System.DateTime dateCreated { get; set; }
         public string userUpdated { get; set; }
         public Nullable<System.DateTime> dateUpdated { get; set; }
+        public string store { get; set; }
+        public string supplier { get; set; }
     }
 }

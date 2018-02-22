@@ -254,7 +254,8 @@
       <PropertyRef Name="idEntry" />
     </Key>
     <Property Name="idEntry" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="idSource" Type="Int32" Nullable="false" />
+    <Property Name="idStore" Type="Int32" />
+    <Property Name="idSupplier" Type="Int32" />
     <Property Name="entryType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="active" Type="Boolean" Nullable="false" />
@@ -537,6 +538,12 @@
       <Parameter Name="returnMessage" Mode="InOut" Type="String" />
     </FunctionImport>
     <FunctionImport Name="uspGEProductSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEProductSearch_Result)">
+      <Parameter Name="user" Mode="In" Type="String" />
+      <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
+      <Parameter Name="returnMessage" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="uspGEProductSearchById" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspGEProductSearchById_Result)">
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
       <Parameter Name="user" Mode="In" Type="String" />
       <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
       <Parameter Name="returnMessage" Mode="InOut" Type="String" />
@@ -907,7 +914,7 @@
       <Parameter Name="idProduct" Mode="In" Type="Int32" />
       <Parameter Name="quantity" Mode="In" Type="Int32" />
       <Parameter Name="purchasePrice" Mode="In" Type="Decimal" />
-      <Parameter Name="dueDate" Mode="In" Type="DateTime" />
+      <Parameter Name="dueDate" Mode="In" Type="String" />
       <Parameter Name="user" Mode="In" Type="String" />
       <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
       <Parameter Name="returnMessage" Mode="InOut" Type="String" />
@@ -930,17 +937,20 @@
       <Parameter Name="returnMessage" Mode="InOut" Type="String" />
     </FunctionImport>
     <FunctionImport Name="uspWAEntryDetailPropertySearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspWAEntryDetailPropertySearch_Result)">
+      <Parameter Name="idEntry" Mode="In" Type="Int32" />
       <Parameter Name="user" Mode="In" Type="String" />
       <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
       <Parameter Name="returnMessage" Mode="InOut" Type="String" />
     </FunctionImport>
     <FunctionImport Name="uspWAEntryDetailSearch" ReturnType="Collection(DB_9CBF45_erpStoreModel.uspWAEntryDetailSearch_Result)">
+      <Parameter Name="idEntry" Mode="In" Type="Int32" />
       <Parameter Name="user" Mode="In" Type="String" />
       <Parameter Name="returnCode" Mode="InOut" Type="Int32" />
       <Parameter Name="returnMessage" Mode="InOut" Type="String" />
     </FunctionImport>
     <FunctionImport Name="uspWAEntryInsert">
-      <Parameter Name="idSource" Mode="In" Type="Int32" />
+      <Parameter Name="idStore" Mode="In" Type="Int32" />
+      <Parameter Name="idSupplier" Mode="In" Type="Int32" />
       <Parameter Name="entryType" Mode="In" Type="String" />
       <Parameter Name="date" Mode="In" Type="DateTime" />
       <Parameter Name="user" Mode="In" Type="String" />
@@ -955,7 +965,8 @@
     </FunctionImport>
     <FunctionImport Name="uspWAEntryUpdate">
       <Parameter Name="idEntry" Mode="In" Type="Int32" />
-      <Parameter Name="idSource" Mode="In" Type="Int32" />
+      <Parameter Name="idStore" Mode="In" Type="Int32" />
+      <Parameter Name="idSupplier" Mode="In" Type="Int32" />
       <Parameter Name="entryType" Mode="In" Type="String" />
       <Parameter Name="date" Mode="In" Type="DateTime" />
       <Parameter Name="user" Mode="In" Type="String" />
@@ -1062,6 +1073,26 @@
     <Property Type="Boolean" Name="required" Nullable="false" />
   </ComplexType>
   <ComplexType Name="uspGEProductSearch_Result">
+    <Property Type="Int32" Name="idProduct" Nullable="false" />
+    <Property Type="Int32" Name="idCategory" Nullable="false" />
+    <Property Type="Int32" Name="idBrand" Nullable="false" />
+    <Property Type="String" Name="codeUnit" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="divisible" Nullable="false" />
+    <Property Type="String" Name="divisibleCodeUnit" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="divisibleNumberParts" Nullable="true" />
+    <Property Type="Boolean" Name="perishable" Nullable="false" />
+    <Property Type="Boolean" Name="traceable" Nullable="false" />
+    <Property Type="String" Name="barcodeType" Nullable="false" MaxLength="20" />
+    <Property Type="Boolean" Name="active" Nullable="false" />
+    <Property Type="String" Name="userCreated" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="category" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="brand" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="uspGEProductSearchById_Result">
     <Property Type="Int32" Name="idProduct" Nullable="false" />
     <Property Type="Int32" Name="idCategory" Nullable="false" />
     <Property Type="Int32" Name="idBrand" Nullable="false" />
@@ -1213,20 +1244,35 @@
     <Property Type="Int32" Name="idEntry" Nullable="false" />
     <Property Type="Int32" Name="idProduct" Nullable="false" />
     <Property Type="Int32" Name="idProperty" Nullable="false" />
-    <Property Type="String" Name="property" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="property" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="value" Nullable="true" MaxLength="100" />
   </ComplexType>
   <ComplexType Name="uspWAEntryDetailSearch_Result">
     <Property Type="Int32" Name="idEntry" Nullable="false" />
-    <Property Type="Int32" Name="idProduct" Nullable="false" />
-    <Property Type="String" Name="name" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="idProduct" Nullable="true" />
+    <Property Type="Int32" Name="idCategory" Nullable="true" />
+    <Property Type="Int32" Name="idBrand" Nullable="true" />
+    <Property Type="String" Name="codeUnit" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="divisible" Nullable="true" />
+    <Property Type="String" Name="divisibleCodeUnit" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="divisibleNumberParts" Nullable="true" />
+    <Property Type="Boolean" Name="perishable" Nullable="true" />
+    <Property Type="Boolean" Name="traceable" Nullable="true" />
+    <Property Type="String" Name="barcodeType" Nullable="true" MaxLength="20" />
+    <Property Type="Boolean" Name="active" Nullable="true" />
+    <Property Type="String" Name="userCreated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateCreated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
     <Property Type="Int32" Name="quantity" Nullable="false" />
     <Property Type="Decimal" Name="purchasePrice" Nullable="false" Precision="10" Scale="2" />
     <Property Type="DateTime" Name="dueDate" Nullable="true" Precision="23" />
   </ComplexType>
   <ComplexType Name="uspWAEntrySearch_Result">
     <Property Type="Int32" Name="idEntry" Nullable="false" />
-    <Property Type="Int32" Name="idSource" Nullable="false" />
+    <Property Type="Int32" Name="idStore" Nullable="true" />
+    <Property Type="Int32" Name="idSupplier" Nullable="true" />
     <Property Type="String" Name="entryType" Nullable="false" MaxLength="20" />
     <Property Type="DateTime" Name="date" Nullable="false" Precision="23" />
     <Property Type="Boolean" Name="active" Nullable="false" />
@@ -1234,5 +1280,7 @@
     <Property Type="DateTime" Name="dateCreated" Nullable="false" Precision="23" />
     <Property Type="String" Name="userUpdated" Nullable="true" MaxLength="50" />
     <Property Type="DateTime" Name="dateUpdated" Nullable="true" Precision="23" />
+    <Property Type="String" Name="store" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="supplier" Nullable="true" MaxLength="100" />
   </ComplexType>
 </Schema>

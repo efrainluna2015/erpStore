@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ENEntryDetail.cs" />
+    <Compile Include="ENEntryDetailProperty.cs" />
     <Compile Include="ENResult.cs" />
     <Compile Include="ENProductProperty.cs" />
     <Compile Include="ENUser.cs" />

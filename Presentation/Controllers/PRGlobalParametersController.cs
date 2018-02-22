@@ -35,7 +35,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public JsonResult update(decimal IGV, decimal percentageMinWholesalePrice, decimal percentageMinRetailPrice, string name)
+        public JsonResult update(decimal IGV, decimal percentageMinWholesalePrice, decimal percentageMinRetailPrice)
         {
             try
             {

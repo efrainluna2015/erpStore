@@ -35,6 +35,30 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
+        public JsonResult searchProductById(int idProduct)
+        {
+            try
+            {
+                if (PValidateHeader(Request.Headers["Authorization"].ToString()))
+                {
+                    DAProduct product = new DAProduct(PUser);
+                    ENResult result = product.searchProductById(idProduct);
+                    result.token = PCreateToken();
+                    return Json(result);
+                }
+                else
+                {
+                    return PSecurityError();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return PUnexpectedError(ex);
+            }
+        }
+
+        [HttpPost]
         public JsonResult searchCategory(int idCategory)
         {
             try

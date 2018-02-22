@@ -268,7 +268,8 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
       <PropertyRef Name="idEntry" />
     </Key>
     <Property Name="idEntry" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="idSource" Type="int" Nullable="false" />
+    <Property Name="idStore" Type="int" />
+    <Property Name="idSupplier" Type="int" />
     <Property Name="entryType" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="date" Type="datetime" Nullable="false" />
     <Property Name="active" Type="bit" Nullable="false" />
@@ -514,6 +515,12 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
   </Function>
   <Function Name="uspGEProductSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspGEProductSearchById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProduct" Type="int" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
     <Parameter Name="returnCode" Type="int" Mode="InOut" />
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
@@ -884,7 +891,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
     <Parameter Name="idProduct" Type="int" Mode="In" />
     <Parameter Name="quantity" Type="int" Mode="In" />
     <Parameter Name="purchasePrice" Type="decimal" Mode="In" />
-    <Parameter Name="dueDate" Type="datetime" Mode="In" />
+    <Parameter Name="dueDate" Type="varchar" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
     <Parameter Name="returnCode" Type="int" Mode="InOut" />
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
@@ -907,17 +914,20 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
   </Function>
   <Function Name="uspWAEntryDetailPropertySearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idEntry" Type="int" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
     <Parameter Name="returnCode" Type="int" Mode="InOut" />
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
   </Function>
   <Function Name="uspWAEntryDetailSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idEntry" Type="int" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
     <Parameter Name="returnCode" Type="int" Mode="InOut" />
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
   </Function>
   <Function Name="uspWAEntryInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="idSource" Type="int" Mode="In" />
+    <Parameter Name="idStore" Type="int" Mode="In" />
+    <Parameter Name="idSupplier" Type="int" Mode="In" />
     <Parameter Name="entryType" Type="varchar" Mode="In" />
     <Parameter Name="date" Type="datetime" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
@@ -932,7 +942,8 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
   </Function>
   <Function Name="uspWAEntryUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idEntry" Type="int" Mode="In" />
-    <Parameter Name="idSource" Type="int" Mode="In" />
+    <Parameter Name="idStore" Type="int" Mode="In" />
+    <Parameter Name="idSupplier" Type="int" Mode="In" />
     <Parameter Name="entryType" Type="varchar" Mode="In" />
     <Parameter Name="date" Type="datetime" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
