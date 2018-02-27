@@ -281,9 +281,10 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
   <EntityType Name="WAEntryDetail">
     <Key>
       <PropertyRef Name="idEntry" />
-      <PropertyRef Name="idProduct" />
+      <PropertyRef Name="idEntryDetail" />
     </Key>
     <Property Name="idEntry" Type="int" Nullable="false" />
+    <Property Name="idEntryDetail" Type="int" Nullable="false" />
     <Property Name="idProduct" Type="int" Nullable="false" />
     <Property Name="quantity" Type="int" Nullable="false" />
     <Property Name="purchasePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
@@ -292,10 +293,12 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
   <EntityType Name="WAEntryDetailProperty">
     <Key>
       <PropertyRef Name="idEntry" />
+      <PropertyRef Name="idEntryDetail" />
       <PropertyRef Name="idProduct" />
       <PropertyRef Name="idProperty" />
     </Key>
     <Property Name="idEntry" Type="int" Nullable="false" />
+    <Property Name="idEntryDetail" Type="int" Nullable="false" />
     <Property Name="idProduct" Type="int" Nullable="false" />
     <Property Name="idProperty" Type="int" Nullable="false" />
     <Property Name="value" Type="varchar" MaxLength="100" />
@@ -790,8 +793,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
   </Function>
   <Function Name="uspSEUserUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="userOld" Type="varchar" Mode="In" />
-    <Parameter Name="userNew" Type="varchar" Mode="In" />
+    <Parameter Name="userName" Type="varchar" Mode="In" />
     <Parameter Name="idProfile" Type="int" Mode="In" />
     <Parameter Name="idStore" Type="int" Mode="In" />
     <Parameter Name="name" Type="varchar" Mode="In" />
@@ -880,7 +882,7 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
   </Function>
   <Function Name="uspWAEntryDetailDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="idEntryDetail" Type="int" Mode="In" />
     <Parameter Name="idEntry" Type="int" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
     <Parameter Name="returnCode" Type="int" Mode="InOut" />
@@ -893,19 +895,20 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
     <Parameter Name="purchasePrice" Type="decimal" Mode="In" />
     <Parameter Name="dueDate" Type="varchar" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="idEntryDetail" Type="int" Mode="InOut" />
     <Parameter Name="returnCode" Type="int" Mode="InOut" />
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
   </Function>
   <Function Name="uspWAEntryDetailPropertyDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="idProduct" Type="int" Mode="In" />
     <Parameter Name="idEntry" Type="int" Mode="In" />
-    <Parameter Name="idProperty" Type="int" Mode="In" />
+    <Parameter Name="idEntryDetail" Type="int" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
     <Parameter Name="returnCode" Type="int" Mode="InOut" />
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
   </Function>
   <Function Name="uspWAEntryDetailPropertyInsert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idEntry" Type="int" Mode="In" />
+    <Parameter Name="idEntryDetail" Type="int" Mode="In" />
     <Parameter Name="idProduct" Type="int" Mode="In" />
     <Parameter Name="idProperty" Type="int" Mode="In" />
     <Parameter Name="value" Type="varchar" Mode="In" />
@@ -919,8 +922,28 @@ advertencia 6002: La tabla o vista 'DB_9CBF45_erpStore.dbo.GEGlobalParameters' n
     <Parameter Name="returnCode" Type="int" Mode="InOut" />
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
   </Function>
+  <Function Name="uspWAEntryDetailPropertyUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idEntry" Type="int" Mode="In" />
+    <Parameter Name="idEntryDetail" Type="int" Mode="In" />
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="idProperty" Type="int" Mode="In" />
+    <Parameter Name="value" Type="varchar" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
   <Function Name="uspWAEntryDetailSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="idEntry" Type="int" Mode="In" />
+    <Parameter Name="user" Type="varchar" Mode="In" />
+    <Parameter Name="returnCode" Type="int" Mode="InOut" />
+    <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />
+  </Function>
+  <Function Name="uspWAEntryDetailUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idEntry" Type="int" Mode="In" />
+    <Parameter Name="idEntryDetail" Type="int" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="purchasePrice" Type="decimal" Mode="In" />
+    <Parameter Name="dueDate" Type="varchar" Mode="In" />
     <Parameter Name="user" Type="varchar" Mode="In" />
     <Parameter Name="returnCode" Type="int" Mode="InOut" />
     <Parameter Name="returnMessage" Type="nvarchar" Mode="InOut" />

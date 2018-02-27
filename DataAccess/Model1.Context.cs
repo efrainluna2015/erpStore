@@ -1217,15 +1217,11 @@ namespace DataAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspSEUserSearch_Result>("uspSEUserSearch", userParameter, returnCode, returnMessage);
         }
     
-        public virtual int uspSEUserUpdate(string userOld, string userNew, Nullable<int> idProfile, Nullable<int> idStore, string name, string lastname, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        public virtual int uspSEUserUpdate(string userName, Nullable<int> idProfile, Nullable<int> idStore, string name, string lastname, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
         {
-            var userOldParameter = userOld != null ?
-                new ObjectParameter("userOld", userOld) :
-                new ObjectParameter("userOld", typeof(string));
-    
-            var userNewParameter = userNew != null ?
-                new ObjectParameter("userNew", userNew) :
-                new ObjectParameter("userNew", typeof(string));
+            var userNameParameter = userName != null ?
+                new ObjectParameter("userName", userName) :
+                new ObjectParameter("userName", typeof(string));
     
             var idProfileParameter = idProfile.HasValue ?
                 new ObjectParameter("idProfile", idProfile) :
@@ -1247,7 +1243,7 @@ namespace DataAccess
                 new ObjectParameter("user", user) :
                 new ObjectParameter("user", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspSEUserUpdate", userOldParameter, userNewParameter, idProfileParameter, idStoreParameter, nameParameter, lastnameParameter, userParameter, returnCode, returnMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspSEUserUpdate", userNameParameter, idProfileParameter, idStoreParameter, nameParameter, lastnameParameter, userParameter, returnCode, returnMessage);
         }
     
         public virtual int uspSEUserUpdatePassword(string username, string passNew, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
@@ -1456,11 +1452,11 @@ namespace DataAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspWAEntryDelete", idEntryParameter, userParameter, returnCode, returnMessage);
         }
     
-        public virtual int uspWAEntryDetailDelete(Nullable<int> idProduct, Nullable<int> idEntry, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        public virtual int uspWAEntryDetailDelete(Nullable<int> idEntryDetail, Nullable<int> idEntry, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
         {
-            var idProductParameter = idProduct.HasValue ?
-                new ObjectParameter("idProduct", idProduct) :
-                new ObjectParameter("idProduct", typeof(int));
+            var idEntryDetailParameter = idEntryDetail.HasValue ?
+                new ObjectParameter("idEntryDetail", idEntryDetail) :
+                new ObjectParameter("idEntryDetail", typeof(int));
     
             var idEntryParameter = idEntry.HasValue ?
                 new ObjectParameter("idEntry", idEntry) :
@@ -1470,10 +1466,10 @@ namespace DataAccess
                 new ObjectParameter("user", user) :
                 new ObjectParameter("user", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspWAEntryDetailDelete", idProductParameter, idEntryParameter, userParameter, returnCode, returnMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspWAEntryDetailDelete", idEntryDetailParameter, idEntryParameter, userParameter, returnCode, returnMessage);
         }
     
-        public virtual int uspWAEntryDetailInsert(Nullable<int> idEntry, Nullable<int> idProduct, Nullable<int> quantity, Nullable<decimal> purchasePrice, string dueDate, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        public virtual int uspWAEntryDetailInsert(Nullable<int> idEntry, Nullable<int> idProduct, Nullable<int> quantity, Nullable<decimal> purchasePrice, string dueDate, string user, ObjectParameter idEntryDetail, ObjectParameter returnCode, ObjectParameter returnMessage)
         {
             var idEntryParameter = idEntry.HasValue ?
                 new ObjectParameter("idEntry", idEntry) :
@@ -1499,35 +1495,35 @@ namespace DataAccess
                 new ObjectParameter("user", user) :
                 new ObjectParameter("user", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspWAEntryDetailInsert", idEntryParameter, idProductParameter, quantityParameter, purchasePriceParameter, dueDateParameter, userParameter, returnCode, returnMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspWAEntryDetailInsert", idEntryParameter, idProductParameter, quantityParameter, purchasePriceParameter, dueDateParameter, userParameter, idEntryDetail, returnCode, returnMessage);
         }
     
-        public virtual int uspWAEntryDetailPropertyDelete(Nullable<int> idProduct, Nullable<int> idEntry, Nullable<int> idProperty, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        public virtual int uspWAEntryDetailPropertyDelete(Nullable<int> idEntry, Nullable<int> idEntryDetail, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
         {
-            var idProductParameter = idProduct.HasValue ?
-                new ObjectParameter("idProduct", idProduct) :
-                new ObjectParameter("idProduct", typeof(int));
-    
             var idEntryParameter = idEntry.HasValue ?
                 new ObjectParameter("idEntry", idEntry) :
                 new ObjectParameter("idEntry", typeof(int));
     
-            var idPropertyParameter = idProperty.HasValue ?
-                new ObjectParameter("idProperty", idProperty) :
-                new ObjectParameter("idProperty", typeof(int));
+            var idEntryDetailParameter = idEntryDetail.HasValue ?
+                new ObjectParameter("idEntryDetail", idEntryDetail) :
+                new ObjectParameter("idEntryDetail", typeof(int));
     
             var userParameter = user != null ?
                 new ObjectParameter("user", user) :
                 new ObjectParameter("user", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspWAEntryDetailPropertyDelete", idProductParameter, idEntryParameter, idPropertyParameter, userParameter, returnCode, returnMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspWAEntryDetailPropertyDelete", idEntryParameter, idEntryDetailParameter, userParameter, returnCode, returnMessage);
         }
     
-        public virtual int uspWAEntryDetailPropertyInsert(Nullable<int> idEntry, Nullable<int> idProduct, Nullable<int> idProperty, string value, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        public virtual int uspWAEntryDetailPropertyInsert(Nullable<int> idEntry, Nullable<int> idEntryDetail, Nullable<int> idProduct, Nullable<int> idProperty, string value, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
         {
             var idEntryParameter = idEntry.HasValue ?
                 new ObjectParameter("idEntry", idEntry) :
                 new ObjectParameter("idEntry", typeof(int));
+    
+            var idEntryDetailParameter = idEntryDetail.HasValue ?
+                new ObjectParameter("idEntryDetail", idEntryDetail) :
+                new ObjectParameter("idEntryDetail", typeof(int));
     
             var idProductParameter = idProduct.HasValue ?
                 new ObjectParameter("idProduct", idProduct) :
@@ -1545,7 +1541,7 @@ namespace DataAccess
                 new ObjectParameter("user", user) :
                 new ObjectParameter("user", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspWAEntryDetailPropertyInsert", idEntryParameter, idProductParameter, idPropertyParameter, valueParameter, userParameter, returnCode, returnMessage);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspWAEntryDetailPropertyInsert", idEntryParameter, idEntryDetailParameter, idProductParameter, idPropertyParameter, valueParameter, userParameter, returnCode, returnMessage);
         }
     
         public virtual ObjectResult<uspWAEntryDetailPropertySearch_Result> uspWAEntryDetailPropertySearch(Nullable<int> idEntry, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
@@ -1561,6 +1557,35 @@ namespace DataAccess
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspWAEntryDetailPropertySearch_Result>("uspWAEntryDetailPropertySearch", idEntryParameter, userParameter, returnCode, returnMessage);
         }
     
+        public virtual int uspWAEntryDetailPropertyUpdate(Nullable<int> idEntry, Nullable<int> idEntryDetail, Nullable<int> idProduct, Nullable<int> idProperty, string value, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        {
+            var idEntryParameter = idEntry.HasValue ?
+                new ObjectParameter("idEntry", idEntry) :
+                new ObjectParameter("idEntry", typeof(int));
+    
+            var idEntryDetailParameter = idEntryDetail.HasValue ?
+                new ObjectParameter("idEntryDetail", idEntryDetail) :
+                new ObjectParameter("idEntryDetail", typeof(int));
+    
+            var idProductParameter = idProduct.HasValue ?
+                new ObjectParameter("idProduct", idProduct) :
+                new ObjectParameter("idProduct", typeof(int));
+    
+            var idPropertyParameter = idProperty.HasValue ?
+                new ObjectParameter("idProperty", idProperty) :
+                new ObjectParameter("idProperty", typeof(int));
+    
+            var valueParameter = value != null ?
+                new ObjectParameter("value", value) :
+                new ObjectParameter("value", typeof(string));
+    
+            var userParameter = user != null ?
+                new ObjectParameter("user", user) :
+                new ObjectParameter("user", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspWAEntryDetailPropertyUpdate", idEntryParameter, idEntryDetailParameter, idProductParameter, idPropertyParameter, valueParameter, userParameter, returnCode, returnMessage);
+        }
+    
         public virtual ObjectResult<uspWAEntryDetailSearch_Result> uspWAEntryDetailSearch(Nullable<int> idEntry, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
         {
             var idEntryParameter = idEntry.HasValue ?
@@ -1572,6 +1597,35 @@ namespace DataAccess
                 new ObjectParameter("user", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspWAEntryDetailSearch_Result>("uspWAEntryDetailSearch", idEntryParameter, userParameter, returnCode, returnMessage);
+        }
+    
+        public virtual int uspWAEntryDetailUpdate(Nullable<int> idEntry, Nullable<int> idEntryDetail, Nullable<int> quantity, Nullable<decimal> purchasePrice, string dueDate, string user, ObjectParameter returnCode, ObjectParameter returnMessage)
+        {
+            var idEntryParameter = idEntry.HasValue ?
+                new ObjectParameter("idEntry", idEntry) :
+                new ObjectParameter("idEntry", typeof(int));
+    
+            var idEntryDetailParameter = idEntryDetail.HasValue ?
+                new ObjectParameter("idEntryDetail", idEntryDetail) :
+                new ObjectParameter("idEntryDetail", typeof(int));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("quantity", quantity) :
+                new ObjectParameter("quantity", typeof(int));
+    
+            var purchasePriceParameter = purchasePrice.HasValue ?
+                new ObjectParameter("purchasePrice", purchasePrice) :
+                new ObjectParameter("purchasePrice", typeof(decimal));
+    
+            var dueDateParameter = dueDate != null ?
+                new ObjectParameter("dueDate", dueDate) :
+                new ObjectParameter("dueDate", typeof(string));
+    
+            var userParameter = user != null ?
+                new ObjectParameter("user", user) :
+                new ObjectParameter("user", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspWAEntryDetailUpdate", idEntryParameter, idEntryDetailParameter, quantityParameter, purchasePriceParameter, dueDateParameter, userParameter, returnCode, returnMessage);
         }
     
         public virtual int uspWAEntryInsert(Nullable<int> idStore, Nullable<int> idSupplier, string entryType, Nullable<System.DateTime> date, string user, ObjectParameter idEntry, ObjectParameter returnCode, ObjectParameter returnMessage)

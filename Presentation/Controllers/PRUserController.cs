@@ -66,7 +66,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public JsonResult update(string userName, int idProfile, int idStore, string name, string lastname, string usernameNew)
+        public JsonResult update(string userName, int idProfile, int idStore, string name, string lastname)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace Presentation.Controllers
                     data.name = name;
                     data.lastname = lastname;
                     DAUser user = new DAUser(PUser);
-                    ENResult result = user.update(data, usernameNew);
+                    ENResult result = user.update(data);
                     result.token = PCreateToken();
                     return Json(result);
                 }
@@ -104,7 +104,7 @@ namespace Presentation.Controllers
                     uspSEUserLogin_Result data = new uspSEUserLogin_Result();
                     data.userName = userName;
                     DAUser user = new DAUser(PUser);
-                    ENResult result = user.update(data, passNew);
+                    ENResult result = user.updatePassword(data, passNew);
                     result.token = PCreateToken();
                     return Json(result);
                 }

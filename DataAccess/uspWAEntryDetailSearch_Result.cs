@@ -14,24 +14,13 @@ namespace DataAccess
     public partial class uspWAEntryDetailSearch_Result
     {
         public int idEntry { get; set; }
-        public Nullable<int> idProduct { get; set; }
-        public Nullable<int> idCategory { get; set; }
-        public Nullable<int> idBrand { get; set; }
-        public string codeUnit { get; set; }
-        public string name { get; set; }
-        public Nullable<bool> divisible { get; set; }
-        public string divisibleCodeUnit { get; set; }
-        public Nullable<int> divisibleNumberParts { get; set; }
-        public Nullable<bool> perishable { get; set; }
-        public Nullable<bool> traceable { get; set; }
-        public string barcodeType { get; set; }
-        public Nullable<bool> active { get; set; }
-        public string userCreated { get; set; }
-        public Nullable<System.DateTime> dateCreated { get; set; }
-        public string userUpdated { get; set; }
-        public Nullable<System.DateTime> dateUpdated { get; set; }
+        public int idEntryDetail { get; set; }
+        public int idProduct { get; set; }
         public int quantity { get; set; }
         public decimal purchasePrice { get; set; }
         public Nullable<System.DateTime> dueDate { get; set; }
+        public Nullable<bool> perishable { get; set; }
+        public string name { get; set; }
+        public string dueDateYMD { get; set; }
     }
 }

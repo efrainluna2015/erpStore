@@ -25,5 +25,6 @@ namespace DataAccess
         public Nullable<System.DateTime> dateUpdated { get; set; }
         public string store { get; set; }
         public string supplier { get; set; }
+        public string dateYMD { get; set; }
     }
 }

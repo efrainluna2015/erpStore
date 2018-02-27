@@ -14,9 +14,10 @@ namespace DataAccess
     public partial class uspWAEntryDetailPropertySearch_Result
     {
         public int idEntry { get; set; }
+        public int idEntryDetail { get; set; }
         public int idProduct { get; set; }
         public int idProperty { get; set; }
-        public string property { get; set; }
+        public string name { get; set; }
         public string value { get; set; }
     }
 }

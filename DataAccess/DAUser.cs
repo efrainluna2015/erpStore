@@ -37,7 +37,7 @@ namespace DataAccess
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
                     db.uspSEUserInsert(data.userName,data.idProfile,data.idStore, data.name, data.lastname,data.password,
-                        data.userCreated, PReturnCode, PReturnMessage);
+                        PUser, PReturnCode, PReturnMessage);
                     return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }
@@ -47,13 +47,13 @@ namespace DataAccess
             }
         }
 
-        public ENResult update(uspSEUserLogin_Result data, string usernameNew)
+        public ENResult update(uspSEUserLogin_Result data)
         {
             try
             {
                 using (erpStoreEntities db = new erpStoreEntities())
                 {
-                    db.uspSEUserUpdate(data.userName, usernameNew, data.idProfile, data.idStore,data.name,data.lastname,PUser, PReturnCode, PReturnMessage);
+                    db.uspSEUserUpdate(data.userName, data.idProfile, data.idStore,data.name,data.lastname,PUser, PReturnCode, PReturnMessage);
                     return new ENResult(Convert.ToInt32(PReturnCode.Value), Convert.ToString(PReturnMessage.Value));
                 }
             }

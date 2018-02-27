@@ -110,7 +110,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public JsonResult update(int id, int idStore, int idSupplier, string entryType, DateTime date)
+        public JsonResult update(int id, int idStore, int idSupplier, string entryType, DateTime date, IList<ENEntryDetail> listDetail, IList<ENEntryDetail> listDetailDelete)
         {
             try
             {
@@ -123,7 +123,7 @@ namespace Presentation.Controllers
                     data.entryType = entryType;
                     data.date = date;
                     DAEntry entry = new DAEntry(PUser);
-                    ENResult result = entry.update(data);
+                    ENResult result = entry.update(data, listDetail, listDetailDelete);
                     result.token = PCreateToken();
                     return Json(result);
                 }

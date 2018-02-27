@@ -15,6 +15,7 @@ namespace DataAccess
     public partial class WAEntryDetail
     {
         public int idEntry { get; set; }
+        public int idEntryDetail { get; set; }
         public int idProduct { get; set; }
         public int quantity { get; set; }
         public decimal purchasePrice { get; set; }
